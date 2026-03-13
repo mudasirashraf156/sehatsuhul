@@ -1,0 +1,174 @@
+import { Link } from 'react-router-dom';
+import { Stars } from '../components/Shared';
+import './Home.css';
+
+const services = [
+  { icon:'💉', title:'IV Therapy', desc:'Professional IV drip administration at home' },
+  { icon:'🩹', title:'Wound Care', desc:'Expert dressing, cleaning & post-op care' },
+  { icon:'💊', title:'Medication', desc:'Supervised medication administration & management' },
+  { icon:'🩸', title:'Blood Tests', desc:'Home sample collection for lab tests' },
+  { icon:'👶', title:'Pediatric Care', desc:'Specialized care for infants & children' },
+  { icon:'🧓', title:'Elderly Care', desc:'Full-time and part-time elderly care services' },
+];
+
+const steps = [
+  { n:'01', icon:'🔍', title:'Search', desc:'Browse verified nurses by city, specialization and rating' },
+  { n:'02', icon:'📅', title:'Book', desc:'Pick a date, time slot and confirm your booking' },
+  { n:'03', icon:'🚗', title:'Nurse Arrives', desc:'Your nurse arrives at your address on time' },
+  { n:'04', icon:'⭐', title:'Rate & Review', desc:'Share your experience after the visit' },
+];
+
+const testimonials = [
+  { name:'Sara Malik', city:'Karachi', text:'The nurse was professional and caring. Saved me a hospital trip!', rating:5 },
+  { name:'Ahmed Raza', city:'Lahore', text:'Booked for my father\'s post-op care. Outstanding service.', rating:5 },
+  { name:'Hina Ali', city:'Islamabad', text:'Quick booking, verified nurse, and affordable price. Highly recommended!', rating:4 },
+];
+
+const stats = [
+  { val:'500+', label:'Verified Nurses' },
+  { val:'10K+', label:'Happy Patients' },
+  { val:'15+', label:'Cities Covered' },
+  { val:'4.8★', label:'Average Rating' },
+];
+
+export default function Home() {
+  return (
+    <div className="home">
+      {/* Hero */}
+      <section className="hero">
+        <div className="hero-bg-shape"/>
+        <div className="container hero-inner">
+          <div className="hero-text fade-up">
+            <div className="hero-tag">🇵🇰 Srinagar's #1 Home Healthcare</div>
+            <h1>Professional <span>Nursing Care</span><br/>Delivered to Your Door</h1>
+            <p>Book certified, verified nurses for home visits, IV therapy, wound care, post-operative support, and more — in minutes.</p>
+            <div className="hero-actions">
+              <Link to="/nurses" className="btn btn-teal">Find a Nurse →</Link>
+              <Link to="/register?role=nurse" className="btn btn-outline">Join as Nurse</Link>
+            </div>
+            <div className="hero-trust">
+              <div className="trust-avatars">
+                {['👩','👨','👩','👨','👩'].map((e,i) => <span key={i}>{e}</span>)}
+              </div>
+              <span>Trusted by <strong>10,000+</strong> patients across Srinagar</span>
+            </div>
+          </div>
+          <div className="hero-card fade-up" style={{animationDelay:'.15s'}}>
+            <div className="hcard-title">Quick Booking</div>
+            <div className="hcard-item">
+              <span>📍</span>
+              <div><small>Location</small><strong>Karachi, Srinagar</strong></div>
+            </div>
+            <div className="hcard-item">
+              <span>👩‍⚕️</span>
+              <div><small>Service</small><strong>General Nursing</strong></div>
+            </div>
+            <div className="hcard-item">
+              <span>📅</span>
+              <div><small>Date</small><strong>Today, ASAP</strong></div>
+            </div>
+            <Link to="/nurses" className="btn btn-teal" style={{width:'100%',justifyContent:'center'}}>Search Available Nurses</Link>
+            <div className="hcard-badges">
+              <span>✅ Verified</span>
+              <span>🔒 Secure</span>
+              <span>⚡ Fast</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="stats-bar">
+        <div className="container stats-inner">
+          {stats.map((s,i) => (
+            <div key={i} className="stat">
+              <div className="stat-val">{s.val}</div>
+              <div className="stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">Our Services</span>
+            <h2>What We Offer</h2>
+            <p>Comprehensive home healthcare services delivered by qualified professionals</p>
+          </div>
+          <div className="services-grid">
+            {services.map((s,i) => (
+              <div key={i} className="service-card">
+                <div className="service-icon">{s.icon}</div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{textAlign:'center',marginTop:'36px'}}>
+            <Link to="/services" className="btn btn-outline">View All Services →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="section how-section">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">Simple Process</span>
+            <h2>How SehatSuhul Works</h2>
+            <p>Book professional care in 4 easy steps</p>
+          </div>
+          <div className="steps-grid">
+            {steps.map((s,i) => (
+              <div key={i} className="step-card">
+                <div className="step-num">{s.n}</div>
+                <div className="step-icon">{s.icon}</div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+                {i < steps.length - 1 && <div className="step-arrow">→</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">Testimonials</span>
+            <h2>What Patients Say</h2>
+          </div>
+          <div className="testi-grid">
+            {testimonials.map((t,i) => (
+              <div key={i} className="testi-card">
+                <Stars rating={t.rating}/>
+                <p>"{t.text}"</p>
+                <div className="testi-author">
+                  <div className="testi-avatar">{t.name[0]}</div>
+                  <div><strong>{t.name}</strong><span>{t.city}</span></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="cta-section">
+        <div className="container cta-inner">
+          <div>
+            <h2>Ready to Book a Nurse?</h2>
+            <p>Hundreds of verified nurses available right now in your city.</p>
+          </div>
+          <div className="cta-btns">
+            <Link to="/nurses" className="btn btn-teal">Find Nurses Now</Link>
+            <Link to="/register?role=nurse" className="btn btn-outline" style={{color:'white',borderColor:'rgba(255,255,255,.4)'}}>Join as Nurse</Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,34 @@
+.auth-page{min-height:calc(100vh - 68px);display:flex;align-items:center;justify-content:center;padding:40px 24px;background:var(--bg)}
+.auth-wrap{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:920px;background:var(--white);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);min-height:580px}
+.auth-side{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px 36px;text-align:center;position:relative;overflow:hidden}
+.auth-side.patient{background:linear-gradient(145deg,#0d9488,#0f766e)}
+.auth-side.nurse{background:linear-gradient(145deg,#e11d48,#9f1239)}
+.auth-side.admin{background:linear-gradient(145deg,#1d4ed8,#1e3a8a)}
+.as-deco{position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);top:-80px;right:-80px}
+.as-icon{font-size:64px;margin-bottom:20px;position:relative;z-index:1}
+.auth-side h2{font-family:'Playfair Display',serif;font-size:28px;color:white;margin-bottom:12px;line-height:1.3;white-space:pre-line;position:relative;z-index:1}
+.auth-side p{color:rgba(255,255,255,.8);font-size:14px;line-height:1.7;max-width:260px;position:relative;z-index:1}
+.as-trust{display:flex;gap:12px;margin-top:24px;position:relative;z-index:1}
+.as-trust span{font-size:12px;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);padding:5px 12px;border-radius:20px}
+.as-steps{margin-top:24px;display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+.as-steps div{font-size:13px;color:rgba(255,255,255,.8);background:rgba(255,255,255,.1);padding:8px 16px;border-radius:8px;text-align:left}
+.auth-form-panel{padding:48px 40px;overflow-y:auto;display:flex;flex-direction:column;justify-content:center}
+.auth-back{color:var(--muted);font-size:13px;font-weight:500;margin-bottom:24px;display:inline-block;transition:color .2s;text-decoration:none}
+.auth-back:hover{color:var(--slate)}
+.auth-form-panel h1{font-family:'Playfair Display',serif;font-size:28px;color:var(--slate);margin-bottom:4px}
+.auth-sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+.role-tabs{display:flex;background:var(--bg);border-radius:10px;padding:4px;gap:4px}
+.role-tabs button{flex:1;padding:9px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:none;color:var(--muted);transition:all .2s;font-family:'DM Sans',sans-serif}
+.role-tabs button.active{background:var(--white);color:var(--slate);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.auth-submit{width:100%;padding:14px;border-radius:12px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin-top:4px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.auth-submit.patient{background:var(--teal);color:white}
+.auth-submit.patient:hover{background:var(--teal-d);box-shadow:0 6px 20px rgba(13,148,136,.35)}
+.auth-submit.nurse{background:var(--rose);color:white}
+.auth-submit.nurse:hover{background:var(--rose-d);box-shadow:0 6px 20px rgba(225,29,72,.3)}
+.auth-submit.admin{background:#1d4ed8;color:white}
+.auth-submit:disabled{opacity:.6;cursor:not-allowed}
+.auth-switch{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}
+.auth-switch a{color:var(--teal);font-weight:600}
+.demo-box{background:var(--bg);border:1px dashed var(--border);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.demo-box strong{color:var(--slate)}
+@media(max-width:680px){.auth-wrap{grid-template-columns:1fr}.auth-side{display:none}.auth-form-panel{padding:32px 24px}}

@@ -1,0 +1,39 @@
+.header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 12px rgba(0,0,0,.06)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:22px;color:var(--slate);text-decoration:none;font-weight:700}
+.logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--teal),#14b8a6);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.c-teal{color:var(--teal)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{padding:7px 14px;border-radius:8px;font-size:14px;font-weight:500;color:var(--muted);transition:all .2s;text-decoration:none}
+.nav-links a:hover,.nav-links a.active{color:var(--teal);background:var(--teal-xl)}
+.header-right{display:flex;align-items:center;gap:10px}
+.auth-btns{display:flex;gap:8px}
+/* User menu */
+.user-menu{position:relative}
+.avatar-btn{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px 6px 6px;cursor:pointer;transition:all .2s}
+.avatar-btn:hover{border-color:var(--teal)}
+.avatar-circle{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#14b8a6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.avatar-name{font-size:13px;font-weight:600;color:var(--slate)}
+.role-pill{font-size:10px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:20px;letter-spacing:.04em}
+.role-pill.patient{background:var(--teal-l);color:var(--teal)}
+.role-pill.nurse{background:var(--rose-l);color:var(--rose)}
+.role-pill.admin{background:#dbeafe;color:#1d4ed8}
+.chevron{font-size:9px;color:var(--muted);margin-left:2px}
+/* Dropdown */
+.dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:8px;min-width:220px;box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:300;animation:fadeUp .15s ease}
+.dropdown-header{padding:12px;border-bottom:1px solid var(--border);margin-bottom:4px}
+.dh-name{font-weight:600;font-size:14px;color:var(--slate)}
+.dh-email{font-size:12px;color:var(--muted);margin-top:2px}
+.dd-item{display:flex;align-items:center;gap:8px;width:100%;padding:10px 12px;background:none;border:none;font-size:13px;font-weight:500;color:var(--slate);text-align:left;cursor:pointer;border-radius:10px;transition:background .15s;text-decoration:none}
+.dd-item:hover{background:var(--bg)}
+.dd-divider{height:1px;background:var(--border);margin:6px 0}
+.dd-logout{color:var(--rose)!important}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--slate);border-radius:2px;transition:all .3s}
+/* Mobile nav */
+.mobile-nav{display:none;flex-direction:column;padding:12px 20px 20px;border-top:1px solid var(--border);background:var(--white);gap:2px}
+.mobile-nav a,.mobile-nav button{padding:12px 14px;font-size:15px;font-weight:500;color:var(--slate);text-decoration:none;border:none;background:none;text-align:left;cursor:pointer;border-radius:10px;transition:background .15s}
+.mobile-nav a:hover,.mobile-nav button:hover{background:var(--bg)}
+.mob-signup{background:var(--teal)!important;color:white!important;text-align:center!important;border-radius:50px!important;margin-top:4px}
+@media(max-width:900px){.nav-links{display:none}.auth-btns{display:none}.hamburger{display:flex}.mobile-nav{display:flex}}

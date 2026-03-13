@@ -1,0 +1,31 @@
+/* Admin CSS */
+.admin-page{min-height:calc(100vh - 68px)}
+.admin-header{background:linear-gradient(135deg,#1e293b,#0f172a);padding:32px 0;color:white}
+.admin-header h1{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:4px}
+.admin-header p{opacity:.7;font-size:14px}
+.admin-body{padding:28px 24px 60px;max-width:1140px;margin:0 auto}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.a-stat{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center}
+.a-stat-icon{font-size:28px;margin-bottom:8px}
+.a-val{font-size:28px;font-weight:700;color:var(--slate);margin-bottom:4px}
+.a-stat>div:last-child{font-size:12px;color:var(--muted)}
+.a-stat.pending{border-color:#fed7aa;background:#fff7ed}
+.a-stat.pending .a-val{color:#c2410c}
+.admin-tabs{display:flex;gap:8px;margin-bottom:24px}
+.admin-tabs button{padding:10px 20px;border-radius:50px;border:1.5px solid var(--border);background:var(--white);font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;color:var(--muted)}
+.admin-tabs button.active{background:var(--slate);color:white;border-color:var(--slate)}
+.admin-section-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--slate);margin-bottom:16px}
+.admin-table{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.admin-table table{width:100%;border-collapse:collapse}
+.admin-table th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--bg);border-bottom:1px solid var(--border)}
+.admin-table td{padding:14px 16px;font-size:13px;color:var(--slate);border-bottom:1px solid var(--border)}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table tr:hover td{background:var(--bg)}
+.admin-table small{color:var(--muted)}
+.admin-table code{background:var(--bg);padding:2px 8px;border-radius:4px;border:1px solid var(--border)}
+.admin-btn{padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.admin-btn.success{background:#dcfce7;color:#16a34a}
+.admin-btn.success:hover{background:#16a34a;color:white}
+.admin-btn.danger{background:var(--rose-l);color:var(--rose)}
+.admin-btn.danger:hover{background:var(--rose);color:white}
+@media(max-width:768px){.admin-stats{grid-template-columns:repeat(2,1fr)}.admin-table{overflow-x:auto}}

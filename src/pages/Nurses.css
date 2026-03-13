@@ -1,0 +1,37 @@
+.nurses-hero{background:linear-gradient(135deg,var(--teal-xl),var(--white));padding:48px 0 36px;border-bottom:1px solid var(--border)}
+.nurses-hero h1{font-family:'Playfair Display',serif;font-size:36px;color:var(--slate);margin-bottom:8px}
+.nurses-hero p{color:var(--muted);margin-bottom:24px}
+.search-bar{display:flex;gap:10px;max-width:580px}
+.search-bar input{flex:1;padding:12px 18px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;outline:none;font-family:'DM Sans',sans-serif}
+.search-bar input:focus{border-color:var(--teal)}
+.nurses-layout{display:grid;grid-template-columns:240px 1fr;gap:28px;padding:32px 24px 60px;max-width:1140px;margin:0 auto}
+/* Filters */
+.filters-panel{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;height:fit-content;position:sticky;top:88px}
+.filters-panel h3{font-size:15px;font-weight:700;color:var(--slate);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.filter-group{margin-bottom:18px}
+.filter-group label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);margin-bottom:6px}
+.filter-group select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;background:var(--bg)}
+/* Results */
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;font-size:14px;color:var(--muted)}
+.nurses-grid{display:flex;flex-direction:column;gap:16px}
+/* Nurse card */
+.nurse-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:24px;transition:all .2s}
+.nurse-card:hover{box-shadow:0 8px 32px rgba(13,148,136,.1);border-color:var(--teal)}
+.nc-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px}
+.nc-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#14b8a6);color:white;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;position:relative}
+.nc-verified{position:absolute;bottom:-2px;right:-2px;background:var(--teal);color:white;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;border:2px solid white}
+.nc-info{flex:1}
+.nc-info h3{font-size:17px;font-weight:700;color:var(--slate);margin-bottom:3px}
+.nc-spec{font-size:12px;color:var(--teal);font-weight:600;background:var(--teal-l);padding:2px 10px;border-radius:20px}
+.nc-meta{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--muted)}
+.nc-rate{text-align:right;flex-shrink:0}
+.nc-rate strong{display:block;font-size:20px;font-weight:700;color:var(--slate)}
+.nc-rate span{font-size:12px;color:var(--muted)}
+.nc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.nc-tags span{font-size:12px;color:var(--muted);background:var(--bg);padding:4px 10px;border-radius:20px;border:1px solid var(--border)}
+.tag-verified{background:var(--teal-l)!important;color:var(--teal)!important;border-color:var(--teal)!important}
+.nc-bio{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.nc-services{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.nc-services span{font-size:11px;color:var(--muted);background:var(--bg);padding:3px 10px;border-radius:20px;border:1px solid var(--border)}
+.nc-actions{display:flex;gap:10px}
+@media(max-width:768px){.nurses-layout{grid-template-columns:1fr}.filters-panel{position:static}}

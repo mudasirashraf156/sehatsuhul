@@ -1,0 +1,32 @@
+.book-page{padding:36px 0 60px}
+.book-layout{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
+.book-sidebar{position:sticky;top:88px}
+.book-sidebar h3{font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
+.book-nurse-info{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.bni-avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#14b8a6);color:white;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0}
+.book-nurse-info strong{display:block;font-size:15px;color:var(--slate)}
+.book-nurse-info span{font-size:12px;color:var(--teal);display:block;margin-bottom:3px}
+.book-rate-info{display:flex;flex-direction:column;gap:8px}
+.book-rate-info>div{display:flex;justify-content:space-between;font-size:14px}
+.book-rate-info span{color:var(--muted)}
+.book-rate-info strong{color:var(--slate);font-weight:600}
+.book-total{border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
+.book-total strong{color:var(--teal);font-size:18px!important;font-weight:700!important}
+.book-form-wrap h1{font-family:'Playfair Display',serif;font-size:28px;color:var(--slate);margin-bottom:4px}
+.book-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.form-section{margin-bottom:16px}
+.form-section h3{font-size:16px;font-weight:700;color:var(--slate);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.time-slot{padding:10px 4px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;color:var(--slate)}
+.time-slot:hover{border-color:var(--teal);color:var(--teal)}
+.time-slot.selected{background:var(--teal);color:white;border-color:var(--teal)}
+.book-submit-wrap{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px 24px;margin-top:8px}
+.book-price{font-size:15px;color:var(--muted)}
+.book-price strong{color:var(--slate);font-size:24px;font-weight:700;margin:0 4px}
+.book-price small{font-size:12px}
+.book-success{text-align:center;padding:80px 24px;max-width:500px;margin:0 auto}
+.success-icon{font-size:64px;margin-bottom:20px}
+.book-success h2{font-family:'Playfair Display',serif;font-size:30px;color:var(--slate);margin-bottom:12px}
+.book-success p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:8px}
+.success-actions{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+@media(max-width:768px){.book-layout{grid-template-columns:1fr}.book-sidebar{position:static}.time-slots{grid-template-columns:repeat(3,1fr)}}
