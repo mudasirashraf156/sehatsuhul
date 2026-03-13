@@ -4,7 +4,7 @@ import './Footer.css';
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="container footer-top">
+      <div className="footer-top">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
             <div className="footer-logo-icon">🩺</div>
