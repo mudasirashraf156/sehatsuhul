@@ -27,15 +27,17 @@ input,select,textarea{font-family:'DM Sans',sans-serif}
 .container{max-width:1140px;margin:0 auto;padding:0 24px}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:50px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
-.btn-teal{background:var(--teal);color:#fff}
-.btn-teal:hover{background:var(--teal-d);box-shadow:0 6px 20px rgba(13,148,136,.35);transform:translateY(-1px)}
-.btn-rose{background:var(--rose);color:#fff}
-.btn-rose:hover{background:var(--rose-d);box-shadow:0 6px 20px rgba(225,29,72,.3);transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:50px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .3s;text-decoration:none;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s}
+.btn:hover::before{left:100%}
+.btn-teal{background:linear-gradient(135deg,var(--teal),var(--teal-d));color:#fff;box-shadow:0 4px 15px rgba(13,148,136,.3)}
+.btn-teal:hover{background:linear-gradient(135deg,var(--teal-d),var(--teal));box-shadow:0 6px 20px rgba(13,148,136,.4);transform:translateY(-2px)}
+.btn-rose{background:linear-gradient(135deg,var(--rose),var(--rose-d));color:#fff}
+.btn-rose:hover{background:linear-gradient(135deg,var(--rose-d),var(--rose));box-shadow:0 6px 20px rgba(225,29,72,.3);transform:translateY(-2px)}
 .btn-outline{background:transparent;border:2px solid var(--border);color:var(--slate);border-radius:50px}
-.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);background:linear-gradient(135deg,rgba(13,148,136,.05),rgba(13,148,136,.02))}
 .btn-ghost{background:transparent;border:none;color:var(--muted);cursor:pointer;padding:8px 16px;border-radius:8px;transition:all .2s}
-.btn-ghost:hover{background:var(--bg);color:var(--slate)}
+.btn-ghost:hover{background:linear-gradient(135deg,var(--bg),rgba(13,148,136,.05));color:var(--slate)}
 .btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
 .btn-sm{padding:8px 16px;font-size:13px}
 
@@ -48,7 +50,10 @@ input,select,textarea{font-family:'DM Sans',sans-serif}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
 /* Cards */
-.card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 4px 24px rgba(15,23,42,.08);transition:all .3s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--teal),var(--rose));transform:scaleX(0);transition:transform .3s}
+.card:hover{box-shadow:0 8px 32px rgba(15,23,42,.12);transform:translateY(-2px)}
+.card:hover::before{transform:scaleX(1)}
 
 /* Badge */
 .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}

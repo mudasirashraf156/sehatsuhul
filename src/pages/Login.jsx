@@ -73,12 +73,6 @@ export default function Login() {
           </form>
 
           <p className="auth-switch">Don't have an account? <Link to={`/register?role=${role}`}>Create one →</Link></p>
-          {role !== 'admin' && (
-            <div className="demo-box">
-              <strong>Demo credentials:</strong>
-              {role === 'patient' ? ' patient@test.com' : ' sara@nurse.com'} / password123
-            </div>
-          )}
         </div>
       </div>
     </div>

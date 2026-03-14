@@ -19,16 +19,16 @@ const steps = [
 ];
 
 const testimonials = [
-  { name:'Sara Malik', city:'Karachi', text:'The nurse was professional and caring. Saved me a hospital trip!', rating:5 },
-  { name:'Ahmed Raza', city:'Lahore', text:'Booked for my father\'s post-op care. Outstanding service.', rating:5 },
-  { name:'Hina Ali', city:'Islamabad', text:'Quick booking, verified nurse, and affordable price. Highly recommended!', rating:4 },
+  { name:'Sara Malik', city:'Srinagar', text:'The nurse was professional and caring. Saved me a hospital trip!', rating:5 },
+  { name:'Ahmed Raza', city:'Budgam', text:'Booked for my father\'s post-op care. Outstanding service.', rating:5 },
+  { name:'Hina Ali', city:'Ganderbal', text:'Quick booking, verified nurse, and affordable price. Highly recommended!', rating:4 },
 ];
 
 const stats = [
-  { val:'500+', label:'Verified Nurses' },
-  { val:'10K+', label:'Happy Patients' },
-  { val:'15+', label:'Cities Covered' },
-  { val:'4.8★', label:'Average Rating' },
+  { val:'200+', label:'Verified Nurses', icon:'👩‍⚕️' },
+  { val:'5K+', label:'Happy Patients', icon:'😊' },
+  { val:'8+', label:'Areas Covered', icon:'🏙️' },
+  { val:'4.8★', label:'Average Rating', icon:'⭐' },
 ];
 
 export default function Home() {
@@ -39,25 +39,25 @@ export default function Home() {
         <div className="hero-bg-shape"/>
         <div className="container hero-inner">
           <div className="hero-text fade-up">
-            <div className="hero-tag"> Srinagar's #1 Home Healthcare</div>
-            <h1>Professional <span>Nursing Care</span><br/>Delivered to Your Door</h1>
-            <p>Book certified, verified nurses for home visits, IV therapy, wound care, post-operative support, and more — in minutes.</p>
+            <div className="hero-tag"> 🏆 Srinagar's #1 Home Healthcare Platform</div>
+            <h1>Professional <span>Nursing Care</span><br/>At Your Doorstep</h1>
+            <p>Connect with certified, verified nurses for home visits, IV therapy, wound care, post-operative support, and specialized medical care — available 24/7 across Srinagar.</p>
             <div className="hero-actions">
-              <Link to="/nurses" className="btn btn-teal">Find a Nurse →</Link>
-              <Link to="/register?role=nurse" className="btn btn-outline">Join as Nurse</Link>
+              <Link to="/nurses" className="btn btn-teal">🔍 Find a Nurse Now</Link>
+              <Link to="/register?role=nurse" className="btn btn-outline">💼 Join as Nurse</Link>
             </div>
             <div className="hero-trust">
               <div className="trust-avatars">
                 {['👩','👨','👩','👨','👩'].map((e,i) => <span key={i}>{e}</span>)}
               </div>
-              <span>Trusted by <strong>10,000+</strong> patients across Srinagar</span>
+              <span>Trusted by <strong>5,000+</strong> families across Srinagar Valley</span>
             </div>
           </div>
           <div className="hero-card fade-up" style={{animationDelay:'.15s'}}>
             <div className="hcard-title">Quick Booking</div>
             <div className="hcard-item">
               <span>📍</span>
-              <div><small>Location</small><strong>Karachi, Srinagar</strong></div>
+              <div><small>Location</small><strong>Srinagar</strong></div>
             </div>
             <div className="hcard-item">
               <span>👩‍⚕️</span>
@@ -82,6 +82,7 @@ export default function Home() {
         <div className="container stats-inner">
           {stats.map((s,i) => (
             <div key={i} className="stat">
+              <div className="stat-icon">{s.icon}</div>
               <div className="stat-val">{s.val}</div>
               <div className="stat-label">{s.label}</div>
             </div>
