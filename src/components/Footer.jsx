@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="footer-logo-icon">🩺</div>
             <span>Sehat<span>Suhul</span></span>
           </Link>
-          <p>Connecting patients with certified nurses for home healthcare services across Srinagar. Available 24/7.</p>
+          <p>Connecting patients with certified nurses for home healthcare services across Kashmir. Available 24/7.</p>
           <div className="footer-social">
             <a href="#" aria-label="Facebook">📘</a>
             <a href="#" aria-label="Instagram">📸</a>
@@ -54,7 +54,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
-          <span>© 2025 SehatSuhul. All rights reserved. Made with ❤️ in Srinagar</span>
+          <span>© 2025 SehatSuhul. All rights reserved. Made with ❤️ </span>
           <div>
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>

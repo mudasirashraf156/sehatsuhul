@@ -42,10 +42,10 @@ export function About() {
     <div className="static-page">
       <h1 className="static-h1">About SehatSuhul</h1>
       <p style={{fontSize:16,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        SehatSuhul is Srinagar's leading home healthcare platform connecting patients with certified, verified nursing professionals. Our mission is to make quality healthcare accessible, affordable, and convenient for every household.
+        SehatSuhul is Kashmir's leading home healthcare platform connecting patients with certified, verified nursing professionals. Our mission is to make quality healthcare accessible, affordable, and convenient for every household.
       </p>
       <h2 className="static-sec">Our Mission</h2>
-      <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8}}>To bridge the gap between patients and healthcare professionals, ensuring world-class nursing care reaches every home in Srinagar — from major cities to smaller towns.</p>
+      <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8}}>To bridge the gap between patients and healthcare professionals, ensuring world-class nursing care reaches every home in Kashmir — from major cities to smaller towns.</p>
       <h2 className="static-sec">Why Choose SehatSuhul?</h2>
       <div className="about-features">
         {[['✅','Verified Nurses','All nurses are PNC-licensed and background-checked'],['⚡','Quick Booking','Book in under 5 minutes, nurse at your door within hours'],['🔒','Secure & Safe','All transactions and data are 100% secure'],['⭐','Rated Professionals','Read real reviews from verified patients'],['💰','Transparent Pricing','No hidden fees — pay only what you see'],['📞','24/7 Support','We\'re here whenever you need us']].map(([i,t,d]) => (

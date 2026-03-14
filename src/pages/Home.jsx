@@ -39,18 +39,18 @@ export default function Home() {
         <div className="hero-bg-shape"/>
         <div className="container hero-inner">
           <div className="hero-text fade-up">
-            <div className="hero-tag"> 🏆 Srinagar's #1 Home Healthcare Platform</div>
+            <div className="hero-tag"> 🏆 Kashmir's #1 Home Healthcare Platform</div>
             <h1>Professional <span>Nursing Care</span><br/>At Your Doorstep</h1>
-            <p>Connect with certified, verified nurses for home visits, IV therapy, wound care, post-operative support, and specialized medical care — available 24/7 across Srinagar.</p>
+            <p>Connect with certified, verified nurses for home visits, IV therapy, wound care, post-operative support, and specialized medical care — available 24/7 across Kashmir.</p>
             <div className="hero-actions">
-              <Link to="/nurses" className="btn btn-teal">🔍 Find a Nurse Now</Link>
-              <Link to="/register?role=nurse" className="btn btn-outline">💼 Join as Nurse</Link>
+              <Link to="/nurses" className="btn btn-teal"><span>🔍  </span>  Find a Nurse Now</Link>
+              <Link to="/register?role=nurse" className="btn btn-outline"> <span>💼   </span>  Join as Nurse</Link>
             </div>
             <div className="hero-trust">
               <div className="trust-avatars">
                 {['👩','👨','👩','👨','👩'].map((e,i) => <span key={i}>{e}</span>)}
               </div>
-              <span>Trusted by <strong>5,000+</strong> families across Srinagar Valley</span>
+              <span>Trusted by <strong>5,000+</strong> families across Kashmir Valley</span>
             </div>
           </div>
           <div className="hero-card fade-up" style={{animationDelay:'.15s'}}>
