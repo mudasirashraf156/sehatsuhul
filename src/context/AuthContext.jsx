@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+axios.defaults.baseURL = 'https://sehatbackend.onrender.com';
 
 const AuthContext = createContext();
 const KEY = 'ss_user';

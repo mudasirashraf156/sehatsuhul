@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const pageStyle = { padding: '60px 0', maxWidth: 900, margin: '0 auto', paddingLeft: 24, paddingRight: 24 };
-const h1Style = { fontFamily: "'Playfair Display',serif", fontSize: 36, color: 'var(--slate)', marginBottom: 12 };
-const secStyle = { fontFamily: "'Playfair Display',serif", fontSize: 24, color: 'var(--slate)', margin: '32px 0 16px' };
+import './StaticPages.css';
 
 export function Services() {
   const services = [
@@ -18,17 +15,17 @@ export function Services() {
     { icon:'❤️', title:'Vital Signs Monitoring', desc:'Regular blood pressure, oxygen, temperature, and pulse monitoring with detailed reports.', price:'₨500+' },
   ];
   return (
-    <div style={pageStyle}>
-      <h1 style={h1Style}>Our Healthcare Services</h1>
+    <div className="static-page">
+      <h1 className="static-h1">Our Healthcare Services</h1>
       <p style={{color:'var(--muted)',fontSize:16,marginBottom:40}}>Professional medical care delivered to your home by certified nurses</p>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:20}}>
+      <div className="services-grid">
         {services.map((s,i) => (
-          <div key={i} className="card" style={{display:'flex',gap:16,alignItems:'flex-start'}}>
-            <div style={{fontSize:36,flexShrink:0}}>{s.icon}</div>
+          <div key={i} className="card service-card">
+            <div className="service-icon">{s.icon}</div>
             <div>
-              <h3 style={{fontSize:16,fontWeight:700,marginBottom:6}}>{s.title}</h3>
-              <p style={{fontSize:13,color:'var(--muted)',lineHeight:1.6,marginBottom:10}}>{s.desc}</p>
-              <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <div className="service-footer">
                 <span style={{fontSize:13,fontWeight:700,color:'var(--teal)'}}>From {s.price}</span>
                 <Link to="/nurses" className="btn btn-teal btn-sm">Book Now</Link>
               </div>
@@ -42,20 +39,20 @@ export function Services() {
 
 export function About() {
   return (
-    <div style={pageStyle}>
-      <h1 style={h1Style}>About SehatSuhul</h1>
+    <div className="static-page">
+      <h1 className="static-h1">About SehatSuhul</h1>
       <p style={{fontSize:16,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
         SehatSuhul is Srinagar's leading home healthcare platform connecting patients with certified, verified nursing professionals. Our mission is to make quality healthcare accessible, affordable, and convenient for every household.
       </p>
-      <h2 style={secStyle}>Our Mission</h2>
+      <h2 className="static-sec">Our Mission</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8}}>To bridge the gap between patients and healthcare professionals, ensuring world-class nursing care reaches every home in Srinagar — from major cities to smaller towns.</p>
-      <h2 style={secStyle}>Why Choose SehatSuhul?</h2>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:16,marginBottom:32}}>
+      <h2 className="static-sec">Why Choose SehatSuhul?</h2>
+      <div className="about-features">
         {[['✅','Verified Nurses','All nurses are PNC-licensed and background-checked'],['⚡','Quick Booking','Book in under 5 minutes, nurse at your door within hours'],['🔒','Secure & Safe','All transactions and data are 100% secure'],['⭐','Rated Professionals','Read real reviews from verified patients'],['💰','Transparent Pricing','No hidden fees — pay only what you see'],['📞','24/7 Support','We\'re here whenever you need us']].map(([i,t,d]) => (
-          <div key={t} className="card" style={{textAlign:'center'}}>
-            <div style={{fontSize:32,marginBottom:10}}>{i}</div>
-            <h3 style={{fontSize:15,fontWeight:700,marginBottom:6}}>{t}</h3>
-            <p style={{fontSize:12,color:'var(--muted)'}}>{d}</p>
+          <div key={t} className="card feature-card">
+            <div className="feature-icon">{i}</div>
+            <h3>{t}</h3>
+            <p>{d}</p>
           </div>
         ))}
       </div>
@@ -72,15 +69,19 @@ export function Contact() {
   const h = e => setForm({...form,[e.target.name]:e.target.value});
   const submit = e => { e.preventDefault(); setSent(true); };
   return (
-    <div style={pageStyle}>
-      <h1 style={h1Style}>Contact Us</h1>
-      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:32}}>
+    <div className="static-page">
+      <h1 className="static-h1">Contact Us</h1>
+      <div className="contact-grid">
         <div>
-          <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.7,marginBottom:24}}>Have questions? We'd love to hear from you. Send us a message and we'll respond within 24 hours.</p>
-          <div style={{display:'flex',flexDirection:'column',gap:16}}>
+          <p className="contact-info">Have questions? We'd love to hear from you. Send us a message and we'll respond within 24 hours.</p>
+          <div className="contact-details">
             {[['📞','Phone','+92 300 0000000'],['✉️','Email','support@sehatsuhul.pk'],['📍','Office','budgam, Srinagar'],['⏰','Hours','Mon-Sat, 9AM-6PM']].map(([i,l,v]) => (
-              <div key={l} style={{display:'flex',alignItems:'center',gap:12,padding:'12px 16px',background:'var(--white)',borderRadius:12,border:'1px solid var(--border)'}}>
-                <span style={{fontSize:24}}>{i}</span><div><small style={{color:'var(--muted)',fontSize:11,textTransform:'uppercase',letterSpacing:'.04em'}}>{l}</small><div style={{fontWeight:600,fontSize:14}}>{v}</div></div>
+              <div key={l} className="contact-item">
+                <span className="contact-item-icon">{i}</span>
+                <div className="contact-item-content">
+                  <small>{l}</small>
+                  <div>{v}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -125,8 +126,8 @@ export function Review() {
   };
 
   return (
-    <div style={{...pageStyle, maxWidth:500}}>
-      <h1 style={h1Style}>Leave a Review</h1>
+    <div className="static-page review-form">
+      <h1 className="static-h1">Leave a Review</h1>
       {error && <div className="alert alert-error">{error}</div>}
       <div className="card">
         <form onSubmit={submit}>
@@ -148,6 +149,35 @@ export function Review() {
           </button>
         </form>
       </div>
+    </div>
+  );
+}
+
+export function Privacy() {
+  return (
+    <div className="static-page">
+      <h1 className="static-h1">Privacy Policy & Terms of Use – Heal Home</h1>
+      <p style={{fontSize:16,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
+        At Heal Home, we are committed to protecting the privacy, security, and trust of our users. This platform is designed to provide convenient access to healthcare-related services such as home nursing support, medicine ordering, and basic health service coordination. To ensure a safe and reliable experience, we follow strict standards for the collection, use, and protection of personal information.
+      </p>
+      <h2 className="static-sec">Privacy Policy</h2>
+      <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
+        Heal Home may collect basic personal information including name, contact details, location, and health-related information necessary for delivering requested healthcare services. This information is used solely to facilitate service requests, improve user experience, and maintain the functionality of the platform. All user data is handled with strict confidentiality and is stored using secure systems designed to protect against unauthorized access. Heal Home does not sell, trade, or misuse personal data. Information may only be shared with relevant service providers when necessary to fulfill user requests or when required by applicable laws and regulations.
+      </p>
+      <h2 className="static-sec">Terms and Conditions</h2>
+      <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
+        By accessing or using the Heal Home application, users agree to comply with the terms and conditions of the platform. Users are responsible for providing accurate and complete information while requesting services. Heal Home acts as a digital platform that connects users with healthcare-related services; however, it does not replace professional medical diagnosis, emergency care, or hospital treatment. The platform is not responsible for delays, unavailability of services, or issues arising from third-party providers.
+      </p>
+      <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
+        Users must use the application responsibly and in accordance with applicable laws. Any misuse, fraudulent activity, or violation of platform policies may result in suspension or termination of access to the application.
+      </p>
+      <h2 className="static-sec">Acceptance of Policy</h2>
+      <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
+        By continuing to access or use the Heal Home application, users acknowledge that they have read, understood, and agreed to the Privacy Policy and Terms of Use outlined above.
+      </p>
+      <blockquote style={{fontSize:16,color:'var(--teal)',fontStyle:'italic',textAlign:'center',marginTop:32}}>
+        "Your trust is our responsibility, and your health and privacy remain our highest priority."
+      </blockquote>
     </div>
   );
 }

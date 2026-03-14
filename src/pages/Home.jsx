@@ -39,7 +39,7 @@ export default function Home() {
         <div className="hero-bg-shape"/>
         <div className="container hero-inner">
           <div className="hero-text fade-up">
-            <div className="hero-tag">🇵🇰 Srinagar's #1 Home Healthcare</div>
+            <div className="hero-tag"> Srinagar's #1 Home Healthcare</div>
             <h1>Professional <span>Nursing Care</span><br/>Delivered to Your Door</h1>
             <p>Book certified, verified nurses for home visits, IV therapy, wound care, post-operative support, and more — in minutes.</p>
             <div className="hero-actions">

@@ -37,6 +37,7 @@ export default function Header() {
           <Link to="/services" className={isActive('/services') ? 'active' : ''}>Services</Link>
           <Link to="/about" className={isActive('/about') ? 'active' : ''}>About</Link>
           <Link to="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link>
+          <Link to="/privacy" className={isActive('/privacy') ? 'active' : ''}>Privacy</Link>
         </nav>
 
         <div className="header-right">
@@ -84,6 +85,7 @@ export default function Header() {
           <Link to="/services">🧪 Services</Link>
           <Link to="/about">ℹ️ About</Link>
           <Link to="/contact">📞 Contact</Link>
+          <Link to="/privacy">🔒 Privacy</Link>
           {user ? (
             <>
               <Link to={dashPath}>📊 Dashboard</Link>

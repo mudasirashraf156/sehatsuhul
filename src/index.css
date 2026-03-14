@@ -88,3 +88,4 @@ input,select,textarea{font-family:'DM Sans',sans-serif}
 
 /* Responsive helpers */
 @media(max-width:768px){.form-row{grid-template-columns:1fr}}
+@media(max-width:480px){.container{padding:0 16px}}

@@ -15,7 +15,7 @@ import NurseDashboard from './pages/NurseDashboard';
 import { PatientBookings, NurseBookings } from './pages/Bookings';
 import { NurseProfileEdit, UserProfile } from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
-import { Services, About, Contact, Review } from './pages/StaticPages';
+import { Services, About, Contact, Review, Privacy } from './pages/StaticPages';
 import AdminLogin from './pages/AdminLogin';
 import './index.css';
 
@@ -31,6 +31,7 @@ function AppRoutes() {
       <Route path="/services" element={<Services />} />
       <Route path="/about"   element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/privacy" element={<Privacy />} />
       <Route path="/login"   element={user ? <Navigate to={user.role === 'nurse' ? '/nurse/dashboard' : user.role === 'admin' ? '/admin' : '/patient/dashboard'}/> : <Login />} />
       <Route path="/register" element={user ? <Navigate to="/"/> : <Register />} />
 
