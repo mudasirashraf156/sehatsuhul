@@ -156,24 +156,24 @@ export function Review() {
 export function Privacy() {
   return (
     <div className="static-page">
-      <h1 className="static-h1">Privacy Policy & Terms of Use – Heal Home</h1>
+      <h1 className="static-h1">Privacy Policy & Terms of Use – SehatSuhul</h1>
       <p style={{fontSize:16,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        At Heal Home, we are committed to protecting the privacy, security, and trust of our users. This platform is designed to provide convenient access to healthcare-related services such as home nursing support, medicine ordering, and basic health service coordination. To ensure a safe and reliable experience, we follow strict standards for the collection, use, and protection of personal information.
+        At SehatSuhul, we are committed to protecting the privacy, security, and trust of our users. This platform is designed to provide convenient access to healthcare-related services such as home nursing support, medicine ordering, and basic health service coordination. To ensure a safe and reliable experience, we follow strict standards for the collection, use, and protection of personal information.
       </p>
       <h2 className="static-sec">Privacy Policy</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        Heal Home may collect basic personal information including name, contact details, location, and health-related information necessary for delivering requested healthcare services. This information is used solely to facilitate service requests, improve user experience, and maintain the functionality of the platform. All user data is handled with strict confidentiality and is stored using secure systems designed to protect against unauthorized access. Heal Home does not sell, trade, or misuse personal data. Information may only be shared with relevant service providers when necessary to fulfill user requests or when required by applicable laws and regulations.
+        SehatSuhul may collect basic personal information including name, contact details, location, and health-related information necessary for delivering requested healthcare services. This information is used solely to facilitate service requests, improve user experience, and maintain the functionality of the platform. All user data is handled with strict confidentiality and is stored using secure systems designed to protect against unauthorized access. SehatSuhul does not sell, trade, or misuse personal data. Information may only be shared with relevant service providers when necessary to fulfill user requests or when required by applicable laws and regulations.
       </p>
       <h2 className="static-sec">Terms and Conditions</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        By accessing or using the Heal Home application, users agree to comply with the terms and conditions of the platform. Users are responsible for providing accurate and complete information while requesting services. Heal Home acts as a digital platform that connects users with healthcare-related services; however, it does not replace professional medical diagnosis, emergency care, or hospital treatment. The platform is not responsible for delays, unavailability of services, or issues arising from third-party providers.
+        By accessing or using the SehatSuhul application, users agree to comply with the terms and conditions of the platform. Users are responsible for providing accurate and complete information while requesting services. SehatSuhul acts as a digital platform that connects users with healthcare-related services; however, it does not replace professional medical diagnosis, emergency care, or hospital treatment. The platform is not responsible for delays, unavailability of services, or issues arising from third-party providers.
       </p>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
         Users must use the application responsibly and in accordance with applicable laws. Any misuse, fraudulent activity, or violation of platform policies may result in suspension or termination of access to the application.
       </p>
       <h2 className="static-sec">Acceptance of Policy</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        By continuing to access or use the Heal Home application, users acknowledge that they have read, understood, and agreed to the Privacy Policy and Terms of Use outlined above.
+        By continuing to access or use the SehatSuhul application, users acknowledge that they have read, understood, and agreed to the Privacy Policy and Terms of Use outlined above.
       </p>
       <blockquote style={{fontSize:16,color:'var(--teal)',fontStyle:'italic',textAlign:'center',marginTop:32}}>
         "Your trust is our responsibility, and your health and privacy remain our highest priority."

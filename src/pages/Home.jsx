@@ -25,9 +25,9 @@ const testimonials = [
 ];
 
 const stats = [
-  { val:'200+', label:'Verified Nurses', icon:'👩‍⚕️' },
-  { val:'5K+', label:'Happy Patients', icon:'😊' },
-  { val:'8+', label:'Areas Covered', icon:'🏙️' },
+  { val:'100+', label:'Verified Nurses', icon:'👩‍⚕️' },
+  { val:'200+', label:'Happy Patients', icon:'😊' },
+  { val:'20+', label:'Districts Covered', icon:'🏙️' },
   { val:'4.8★', label:'Average Rating', icon:'⭐' },
 ];
 
