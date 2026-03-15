@@ -5,14 +5,14 @@ import './StaticPages.css';
 
 export function Services() {
   const services = [
-    { icon:'💉', title:'IV Therapy', desc:'Professional IV drip administration including fluids, vitamins, antibiotics, and medications at home by certified nurses.', price:'₨1,500+' },
-    { icon:'🩹', title:'Wound Care & Dressing', desc:'Expert wound cleaning, dressing changes, post-surgical suture care, and pressure ulcer management.', price:'₨800+' },
-    { icon:'💊', title:'Medication Administration', desc:'Supervised oral, IM, and IV medication administration with monitoring for side effects.', price:'₨600+' },
-    { icon:'🩸', title:'Home Blood Tests', desc:'Professional sample collection for complete blood count, sugar, lipids, and all standard lab tests.', price:'₨500+' },
-    { icon:'👶', title:'Pediatric Nursing', desc:'Specialized care for children and newborns including vaccination support and pediatric assessments.', price:'₨1,000+' },
-    { icon:'🧓', title:'Elderly Care', desc:'Full-time and part-time companion nursing, mobility assistance, and chronic condition management.', price:'₨900+' },
-    { icon:'🏥', title:'Post-Op Recovery', desc:'Professional post-operative monitoring, early mobilization, and recovery support at home.', price:'₨1,200+' },
-    { icon:'❤️', title:'Vital Signs Monitoring', desc:'Regular blood pressure, oxygen, temperature, and pulse monitoring with detailed reports.', price:'₨500+' },
+    { icon:'💉', title:'IV Therapy', desc:'Professional IV drip administration including fluids, vitamins, antibiotics, and medications at home by certified nurses.', price:'₨1,500+', image:'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&crop=center' },
+    { icon:'🩹', title:'Wound Care & Dressing', desc:'Expert wound cleaning, dressing changes, post-surgical suture care, and pressure ulcer management.', price:'₨800+', image:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center' },
+    { icon:'💊', title:'Medication Administration', desc:'Supervised oral, IM, and IV medication administration with monitoring for side effects.', price:'₨600+', image:'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop&crop=center' },
+    { icon:'🩸', title:'Home Blood Tests', desc:'Professional sample collection for complete blood count, sugar, lipids, and all standard lab tests.', price:'₨500+', image:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop&crop=center' },
+    { icon:'👶', title:'Pediatric Nursing', desc:'Specialized care for children and newborns including vaccination support and pediatric assessments.', price:'₨1,000+', image:'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&crop=center' },
+    { icon:'🧓', title:'Elderly Care', desc:'Full-time and part-time companion nursing, mobility assistance, and chronic condition management.', price:'₨900+', image:'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center' },
+    { icon:'🏥', title:'Post-Op Recovery', desc:'Professional post-operative monitoring, early mobilization, and recovery support at home.', price:'₨1,200+', image:'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400&h=300&fit=crop&crop=center' },
+    { icon:'❤️', title:'Vital Signs Monitoring', desc:'Regular blood pressure, oxygen, temperature, and pulse monitoring with detailed reports.', price:'₨500+', image:'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=300&fit=crop&crop=center' },
   ];
   return (
     <div className="static-page">
@@ -20,14 +20,17 @@ export function Services() {
       <p style={{color:'var(--muted)',fontSize:16,marginBottom:40}}>Professional medical care delivered to your home by certified nurses</p>
       <div className="services-grid">
         {services.map((s,i) => (
-          <div key={i} className="card service-card">
-            <div className="service-icon">{s.icon}</div>
-            <div>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-              <div className="service-footer">
-                <span style={{fontSize:13,fontWeight:700,color:'var(--teal)'}}>From {s.price}</span>
-                <Link to="/nurses" className="btn btn-teal btn-sm">Book Now</Link>
+          <div key={i} className="card service-card" style={{backgroundImage: `url(${s.image})`}}>
+            <div className="service-overlay"/>
+            <div className="service-content">
+              <div className="service-icon">{s.icon}</div>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+                <div className="service-footer">
+                  <span style={{fontSize:13,fontWeight:700,color:'white', textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)'}}>From {s.price}</span>
+                  <Link to="/nurses" className="btn btn-teal btn-sm">Book Now</Link>
+                </div>
               </div>
             </div>
           </div>

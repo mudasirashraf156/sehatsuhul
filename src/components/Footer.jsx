@@ -44,7 +44,6 @@ export default function Footer() {
           <h4>Nurses</h4>
           <Link to="/register?role=nurse">Join as Nurse</Link>
           <Link to="/nurse/dashboard">Dashboard</Link>
-          <Link to="/about">Verification</Link>
           <Link to="/contact">Support</Link>
         </div>
 
@@ -52,6 +51,7 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Help</h4>
           <Link to="/about">How it Works</Link>
+          <Link to="/scan">Free Prescription Help</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/terms">Terms</Link>

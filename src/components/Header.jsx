@@ -37,7 +37,9 @@ export default function Header() {
           <Link to="/services" className={isActive('/services') ? 'active' : ''}>Services</Link>
           <Link to="/about" className={isActive('/about') ? 'active' : ''}>About</Link>
           <Link to="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link>
-          <Link to="/privacy" className={isActive('/privacy') ? 'active' : ''}>Privacy</Link>
+          <Link to="/scan" className={isActive('/scan') ? 'active' : ''}>
+  🆓 Free Help
+</Link>
         </nav>
 
         <div className="header-right">

@@ -3,12 +3,12 @@ import { Stars } from '../components/Shared';
 import './Home.css';
 
 const services = [
-  { icon:'💉', title:'IV Therapy', desc:'Professional IV drip administration at home' },
-  { icon:'🩹', title:'Wound Care', desc:'Expert dressing, cleaning & post-op care' },
-  { icon:'💊', title:'Medication', desc:'Supervised medication administration & management' },
-  { icon:'🩸', title:'Blood Tests', desc:'Home sample collection for lab tests' },
-  { icon:'👶', title:'Pediatric Care', desc:'Specialized care for infants & children' },
-  { icon:'🧓', title:'Elderly Care', desc:'Full-time and part-time elderly care services' },
+  { icon:'💉', title:'IV Therapy', desc:'Professional IV drip administration at home', image:'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&crop=center' },
+  { icon:'🩹', title:'Wound Care', desc:'Expert dressing, cleaning & post-op care', image:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center' },
+  { icon:'💊', title:'Medication', desc:'Supervised medication administration & management', image:'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop&crop=center' },
+  { icon:'🩸', title:'Blood Tests', desc:'Home sample collection for lab tests', image:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop&crop=center' },
+  { icon:'👶', title:'Pediatric Care', desc:'Specialized care for infants & children', image:'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&crop=center' },
+  { icon:'🧓', title:'Elderly Care', desc:'Full-time and part-time elderly care services', image:'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center' },
 ];
 
 const steps = [
@@ -100,10 +100,13 @@ export default function Home() {
           </div>
           <div className="services-grid">
             {services.map((s,i) => (
-              <div key={i} className="service-card">
-                <div className="service-icon">{s.icon}</div>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
+              <div key={i} className="service-card" style={{backgroundImage: `url(${s.image})`}}>
+                <div className="service-overlay"/>
+                <div className="service-content">
+                  <div className="service-icon">{s.icon}</div>
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>

@@ -4,10 +4,37 @@
 .static-sec { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--slate); margin: 32px 0 16px; }
 
 .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.service-card { display: flex; gap: 16px; align-items: flex-start; }
-.service-icon { font-size: 36px; flex-shrink: 0; }
-.service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-.service-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+.service-card { 
+  display: flex; 
+  gap: 16px; 
+  align-items: flex-start; 
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 200px;
+  border-radius: 12px;
+  padding: 20px;
+}
+.service-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(13, 148, 136, 0.4) 100%);
+  border-radius: 12px;
+}
+.service-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  width: 100%;
+}
+.service-icon { font-size: 36px; flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); }
+.service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
+.service-card p { font-size: 13px; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin-bottom: 10px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
 .service-footer { display: flex; align-items: center; justify-content: space-between; }
 
 .about-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
@@ -32,7 +59,7 @@
   .static-h1 { font-size: 28px; }
   .static-sec { font-size: 20px; }
   .services-grid { grid-template-columns: 1fr; }
-  .service-card { flex-direction: column; text-align: center; }
+  .service-card { flex-direction: column; text-align: center; min-height: 180px; }
   .about-features { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 24px; }
   .contact-details { gap: 12px; }

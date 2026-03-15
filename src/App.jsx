@@ -17,6 +17,7 @@ import { NurseProfileEdit, UserProfile } from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import { Services, About, Contact, Review, Privacy } from './pages/StaticPages';
 import AdminLogin from './pages/AdminLogin';
+import ScanHelp from './pages/ScanHelp';
 import './index.css';
 
 function AppRoutes() {
@@ -25,6 +26,7 @@ function AppRoutes() {
     <Routes>
       {/* Public */}
       <Route path="/"        element={<Home />} />
+      <Route path="/scan" element={<ScanHelp />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/nurses"  element={<Nurses />} />
       <Route path="/nurses/:id" element={<NurseProfilePage />} />
