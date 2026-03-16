@@ -24,13 +24,13 @@ export default function NurseDashboard() {
 
   const updateStatus = async (id, status) => {
     await axios.patch(`/api/bookings/${id}/status`, { status });
-    setBookings(bookings.map(b => b._id === id ? {...b, status} : b));
+    setBookings(bookings.map(b => b._id === id ? { ...b, status } : b));
   };
 
-  const pending   = bookings.filter(b => b.status === 'pending');
-  const active    = bookings.filter(b => ['confirmed','in-progress'].includes(b.status));
+  const pending = bookings.filter(b => b.status === 'pending');
+  const active = bookings.filter(b => ['confirmed', 'in-progress'].includes(b.status));
   const completed = bookings.filter(b => b.status === 'completed');
-  const earnings  = completed.reduce((s, b) => s + b.totalAmount, 0);
+  const earnings = completed.reduce((s, b) => s + b.totalAmount, 0);
 
   return (
     <div className="dash-page">
@@ -48,7 +48,7 @@ export default function NurseDashboard() {
 
       <div className="container dash-body">
         {!profile?.isVerified && (
-          <div className="alert alert-warning" style={{marginBottom:'24px'}}>
+          <div className="alert alert-warning" style={{ marginBottom: '24px' }}>
             ⏳ Your profile is <strong>pending verification</strong>. You'll start receiving bookings once approved by our team.
           </div>
         )}
@@ -73,6 +73,11 @@ export default function NurseDashboard() {
             <Link to="/nurse/profile" className="qa-card rose">
               <span>🗓️</span><strong>Availability</strong><p>Set your working hours</p>
             </Link>
+            <Link to="/nurse/id-card" className="qa-card rose">
+              <span>🪪</span>
+              <strong>My ID Card</strong>
+              <p>Download your official ID</p>
+            </Link>
           </div>
         </div>
 
@@ -95,7 +100,7 @@ export default function NurseDashboard() {
                   <div className="br-right">
                     <div className="br-amount">₨{b.totalAmount?.toLocaleString()}</div>
                     <button className="btn btn-teal btn-sm" onClick={() => updateStatus(b._id, 'confirmed')}>✅ Accept</button>
-                    <button className="btn btn-sm" style={{background:'var(--rose-l)',color:'var(--rose)',borderRadius:'50px',border:'none',cursor:'pointer',padding:'8px 16px',fontWeight:600}}
+                    <button className="btn btn-sm" style={{ background: 'var(--rose-l)', color: 'var(--rose)', borderRadius: '50px', border: 'none', cursor: 'pointer', padding: '8px 16px', fontWeight: 600 }}
                       onClick={() => updateStatus(b._id, 'cancelled')}>❌ Decline</button>
                   </div>
                 </div>
@@ -111,35 +116,35 @@ export default function NurseDashboard() {
             <Link to="/nurse/bookings" className="btn btn-outline btn-sm">View All</Link>
           </div>
           {loading ? <div className="page-loader">Loading…</div>
-          : bookings.length === 0 ? (
-            <div className="empty-state">
-              <div className="empty-icon">📋</div>
-              <h3>No bookings yet</h3>
-              <p>Once your profile is verified, patients can book you</p>
-            </div>
-          ) : (
-            <div className="bookings-list">
-              {bookings.slice(0, 5).map(b => (
-                <div key={b._id} className="booking-row">
-                  <div className="br-left">
-                    <div className="br-avatar rose-av">{b.patient?.firstName?.[0]}</div>
-                    <div>
-                      <strong>{b.patient?.firstName} {b.patient?.lastName}</strong>
-                      <span>{b.service}</span>
-                      <span>📅 {new Date(b.bookingDate).toLocaleDateString()} at {b.timeSlot}</span>
+            : bookings.length === 0 ? (
+              <div className="empty-state">
+                <div className="empty-icon">📋</div>
+                <h3>No bookings yet</h3>
+                <p>Once your profile is verified, patients can book you</p>
+              </div>
+            ) : (
+              <div className="bookings-list">
+                {bookings.slice(0, 5).map(b => (
+                  <div key={b._id} className="booking-row">
+                    <div className="br-left">
+                      <div className="br-avatar rose-av">{b.patient?.firstName?.[0]}</div>
+                      <div>
+                        <strong>{b.patient?.firstName} {b.patient?.lastName}</strong>
+                        <span>{b.service}</span>
+                        <span>📅 {new Date(b.bookingDate).toLocaleDateString()} at {b.timeSlot}</span>
+                      </div>
+                    </div>
+                    <div className="br-right">
+                      <StatusBadge status={b.status} />
+                      <div className="br-amount">₨{b.totalAmount?.toLocaleString()}</div>
+                      {b.status === 'confirmed' && (
+                        <button className="btn btn-teal btn-sm" onClick={() => updateStatus(b._id, 'completed')}>Mark Done</button>
+                      )}
                     </div>
                   </div>
-                  <div className="br-right">
-                    <StatusBadge status={b.status}/>
-                    <div className="br-amount">₨{b.totalAmount?.toLocaleString()}</div>
-                    {b.status === 'confirmed' && (
-                      <button className="btn btn-teal btn-sm" onClick={() => updateStatus(b._id, 'completed')}>Mark Done</button>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Nurses from './pages/Nurses';
 import NurseProfilePage from './pages/NurseProfile';
+import NurseIDCard from './pages/NurseIDCard';
 import Book from './pages/Book';
 import PatientDashboard from './pages/PatientDashboard';
 import NurseDashboard from './pages/NurseDashboard';
@@ -48,6 +49,9 @@ function AppRoutes() {
       <Route path="/nurse/dashboard" element={<PrivateRoute role="nurse"><NurseDashboard /></PrivateRoute>} />
       <Route path="/nurse/bookings"  element={<PrivateRoute role="nurse"><NurseBookings /></PrivateRoute>} />
       <Route path="/nurse/profile"   element={<PrivateRoute role="nurse"><NurseProfileEdit /></PrivateRoute>} />
+      <Route path="/nurse/id-card" element={
+  <PrivateRoute role="nurse"><NurseIDCard /></PrivateRoute>
+} />
 
       {/* Shared profile */}
       <Route path="/profile" element={<PrivateRoute>{user?.role === 'nurse' ? <NurseProfileEdit /> : <UserProfile />}</PrivateRoute>} />
