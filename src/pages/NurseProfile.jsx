@@ -31,7 +31,7 @@ export default function NurseProfilePage() {
         <div className="np-left">
           <div className="card np-card">
             <div className="np-avatar">{u?.firstName?.[0]}{u?.lastName?.[0]}</div>
-            {nurse.isVerified && <div className="np-verified-badge">✅ Verified by SehatSuhul</div>}
+            {nurse.isVerified && <div className="np-verified-badge">✅ Verified by SehatSehul</div>}
             <h1>{u?.firstName} {u?.lastName}</h1>
             <div className="np-spec">{nurse.specialization}</div>
             <div className="np-rating">

@@ -121,7 +121,7 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="section-tag">Simple Process</span>
-            <h2>How SehatSuhul Works</h2>
+            <h2>How SehatSehul Works</h2>
             <p>Book professional care in 4 easy steps</p>
           </div>
           <div className="steps-grid">

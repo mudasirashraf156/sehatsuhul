@@ -43,13 +43,13 @@ export function Services() {
 export function About() {
   return (
     <div className="static-page">
-      <h1 className="static-h1">About SehatSuhul</h1>
+      <h1 className="static-h1">About SehatSehul</h1>
       <p style={{fontSize:16,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        SehatSuhul is Kashmir's leading home healthcare platform connecting patients with certified, verified nursing professionals. Our mission is to make quality healthcare accessible, affordable, and convenient for every household.
+        SehatSehul is Kashmir's leading home healthcare platform connecting patients with certified, verified nursing professionals. Our mission is to make quality healthcare accessible, affordable, and convenient for every household.
       </p>
       <h2 className="static-sec">Our Mission</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8}}>To bridge the gap between patients and healthcare professionals, ensuring world-class nursing care reaches every home in Kashmir — from major cities to smaller towns.</p>
-      <h2 className="static-sec">Why Choose SehatSuhul?</h2>
+      <h2 className="static-sec">Why Choose SehatSehul?</h2>
       <div className="about-features">
         {[['✅','Verified Nurses','All nurses are PNC-licensed and background-checked'],['⚡','Quick Booking','Book in under 5 minutes, nurse at your door within hours'],['🔒','Secure & Safe','All transactions and data are 100% secure'],['⭐','Rated Professionals','Read real reviews from verified patients'],['💰','Transparent Pricing','No hidden fees — pay only what you see'],['📞','24/7 Support','We\'re here whenever you need us']].map(([i,t,d]) => (
           <div key={t} className="card feature-card">
@@ -76,14 +76,41 @@ export function Contact() {
       <h1 className="static-h1">Contact Us</h1>
       <div className="contact-grid">
         <div>
-          <p className="contact-info">Have questions? We'd love to hear from you. Send us a message and we'll respond within 24 hours.</p>
+          <p className="contact-info">Need assistance? Reach out via phone, email, or WhatsApp — we’re here to help 24/7.</p>
           <div className="contact-details">
-            {[['📞','Phone','+92 300 0000000'],['✉️','Email','support@sehatsuhul.pk'],['📍','Office','budgam, Srinagar'],['⏰','Hours','Mon-Sat, 9AM-6PM']].map(([i,l,v]) => (
-              <div key={l} className="contact-item">
-                <span className="contact-item-icon">{i}</span>
+            {[
+              { icon:'📞', label:'Phone', value:'70062 73733 / 70066 59980', href:'tel:+917006273733' },
+              { icon:'📧', label:'Email', value:'sehatsehul@gmail.com', href:'mailto:sehatsehul@gmail.com' },
+              { icon:'💬', label:'WhatsApp', value:'+91 77809 06971', href:'https://wa.me/917780906971' },
+              {
+                icon:'🌐',
+                label:'Social',
+                links: [
+                  { icon:'📘', label:'Facebook', href:'https://www.facebook.com/sehatsehul' },
+                  { icon:'📸', label:'Instagram', href:'https://www.instagram.com/sehatsehul' },
+                ]
+              }
+            ].map((item) => (
+              <div key={item.label} className="contact-item">
+                <span className="contact-item-icon">{item.icon}</span>
                 <div className="contact-item-content">
-                  <small>{l}</small>
-                  <div>{v}</div>
+                  <small>{item.label}</small>
+                  {item.links ? (
+                    <div style={{display:'flex', gap:12, flexWrap:'wrap'}}>
+                      {item.links.map(link => (
+                        <a key={link.label} href={link.href} target="_blank" rel="noreferrer" style={{display:'inline-flex', alignItems:'center', gap:6, color:'inherit', textDecoration:'none'}}>
+                          <span>{link.icon}</span>
+                          <span>{link.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  ) : item.href ? (
+                    <div>
+                      <a href={item.href} target="_blank" rel="noreferrer" style={{color:'inherit', textDecoration:'none'}}>{item.value}</a>
+                    </div>
+                  ) : (
+                    <div>{item.value}</div>
+                  )}
                 </div>
               </div>
             ))}
@@ -159,24 +186,24 @@ export function Review() {
 export function Privacy() {
   return (
     <div className="static-page">
-      <h1 className="static-h1">Privacy Policy & Terms of Use – SehatSuhul</h1>
+      <h1 className="static-h1">Privacy Policy & Terms of Use – SehatSehul</h1>
       <p style={{fontSize:16,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        At SehatSuhul, we are committed to protecting the privacy, security, and trust of our users. This platform is designed to provide convenient access to healthcare-related services such as home nursing support, medicine ordering, and basic health service coordination. To ensure a safe and reliable experience, we follow strict standards for the collection, use, and protection of personal information.
+        At SehatSehul, we are committed to protecting the privacy, security, and trust of our users. This platform is designed to provide convenient access to healthcare-related services such as home nursing support, medicine ordering, and basic health service coordination. To ensure a safe and reliable experience, we follow strict standards for the collection, use, and protection of personal information.
       </p>
       <h2 className="static-sec">Privacy Policy</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        SehatSuhul may collect basic personal information including name, contact details, location, and health-related information necessary for delivering requested healthcare services. This information is used solely to facilitate service requests, improve user experience, and maintain the functionality of the platform. All user data is handled with strict confidentiality and is stored using secure systems designed to protect against unauthorized access. SehatSuhul does not sell, trade, or misuse personal data. Information may only be shared with relevant service providers when necessary to fulfill user requests or when required by applicable laws and regulations.
+        SehatSehul may collect basic personal information including name, contact details, location, and health-related information necessary for delivering requested healthcare services. This information is used solely to facilitate service requests, improve user experience, and maintain the functionality of the platform. All user data is handled with strict confidentiality and is stored using secure systems designed to protect against unauthorized access. SehatSehul does not sell, trade, or misuse personal data. Information may only be shared with relevant service providers when necessary to fulfill user requests or when required by applicable laws and regulations.
       </p>
       <h2 className="static-sec">Terms and Conditions</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        By accessing or using the SehatSuhul application, users agree to comply with the terms and conditions of the platform. Users are responsible for providing accurate and complete information while requesting services. SehatSuhul acts as a digital platform that connects users with healthcare-related services; however, it does not replace professional medical diagnosis, emergency care, or hospital treatment. The platform is not responsible for delays, unavailability of services, or issues arising from third-party providers.
+        By accessing or using the SehatSehul application, users agree to comply with the terms and conditions of the platform. Users are responsible for providing accurate and complete information while requesting services. SehatSehul acts as a digital platform that connects users with healthcare-related services; however, it does not replace professional medical diagnosis, emergency care, or hospital treatment. The platform is not responsible for delays, unavailability of services, or issues arising from third-party providers.
       </p>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
         Users must use the application responsibly and in accordance with applicable laws. Any misuse, fraudulent activity, or violation of platform policies may result in suspension or termination of access to the application.
       </p>
       <h2 className="static-sec">Acceptance of Policy</h2>
       <p style={{fontSize:15,color:'var(--muted)',lineHeight:1.8,marginBottom:24}}>
-        By continuing to access or use the SehatSuhul application, users acknowledge that they have read, understood, and agreed to the Privacy Policy and Terms of Use outlined above.
+        By continuing to access or use the SehatSehul application, users acknowledge that they have read, understood, and agreed to the Privacy Policy and Terms of Use outlined above.
       </p>
       <blockquote style={{fontSize:16,color:'var(--teal)',fontStyle:'italic',textAlign:'center',marginTop:32}}>
         "Your trust is our responsibility, and your health and privacy remain our highest priority."

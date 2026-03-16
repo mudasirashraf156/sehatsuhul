@@ -6,7 +6,7 @@ export default function ScanHelp() {
   const [messages, setMessages] = useState([
     {
       from: 'bot',
-      text: "Hello! 👋 I'm your SehatSuhul Health Assistant. You can ask me anything about your health, or upload a prescription and I'll help you understand it.",
+      text: "Hello! 👋 I'm your SehatSehul Health Assistant. You can ask me anything about your health, or upload a prescription and I'll help you understand it.",
       time: now()
     }
   ]);
@@ -52,7 +52,7 @@ export default function ScanHelp() {
     if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) return "Hello! 😊 How can I help you today? You can ask me health questions or upload your prescription for assistance.";
     if (msg.includes('prescription') || msg.includes('medicine') || msg.includes('tablet')) return "Please upload a photo of your prescription using the 📎 button below and I'll help you understand the medications, dosage, and instructions. 💊";
     if (msg.includes('covid') || msg.includes('corona')) return "For COVID-19 symptoms, please isolate and monitor your oxygen levels. If below 94%, seek immediate medical help. Our nurses can provide home care support. Stay safe! 😷";
-    if (msg.includes('thank')) return "You're welcome! 😊 Stay healthy and don't hesitate to reach out anytime. SehatSuhul is here for you 24/7! 🩺";
+    if (msg.includes('thank')) return "You're welcome! 😊 Stay healthy and don't hesitate to reach out anytime. SehatSehul is here for you 24/7! 🩺";
     return "Thank you for your message. For the best medical advice, I recommend consulting one of our certified nurses. Would you like to book a home visit? You can also upload your prescription for a detailed review. 🏥";
   };
 
@@ -203,7 +203,7 @@ export default function ScanHelp() {
           <div className="chat-header">
             <div className="chat-avatar">🤖</div>
             <div>
-              <strong>SehatSuhul Health Assistant</strong>
+              <strong>SehatSehul Health Assistant</strong>
               <div className="online-dot"><span/>Online — Available 24/7</div>
             </div>
           </div>

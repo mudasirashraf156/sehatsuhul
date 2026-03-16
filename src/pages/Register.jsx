@@ -32,7 +32,7 @@ export default function Register() {
         <div className={`auth-side ${role}`}>
           <div className="as-deco"/>
           <div className="as-icon">{role === 'patient' ? '🙋' : '👩‍⚕️'}</div>
-          <h2>{role === 'patient' ? 'Join SehatSuhul' : 'Join Our\nCare Network'}</h2>
+          <h2>{role === 'patient' ? 'Join SehatSehul' : 'Join Our\nCare Network'}</h2>
           <p>{role === 'patient'
             ? 'Get access to hundreds of certified nurses. Book in minutes, care at your door.'
             : 'Register your credentials, get verified, and start receiving patient bookings near you.'}</p>
@@ -48,7 +48,7 @@ export default function Register() {
         <div className="auth-form-panel">
           <Link to="/" className="auth-back">← Back to Home</Link>
           <h1>Create Account</h1>
-          <p className="auth-sub">Join thousands of users on SehatSuhul</p>
+          <p className="auth-sub">Join thousands of users on SehatSehul</p>
 
           <div className="role-tabs" style={{marginBottom:'20px'}}>
             <button className={role === 'patient' ? 'active' : ''} onClick={() => setRole('patient')}>🙋 Patient</button>

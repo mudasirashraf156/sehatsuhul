@@ -32,7 +32,7 @@ export default function AdminDashboard() {
       <div className="admin-header">
         <div className="container">
           <h1>⚙️ Admin Dashboard</h1>
-          <p>SehatSuhul Platform Management</p>
+          <p>sehatsehul Platform Management</p>
         </div>
       </div>
 

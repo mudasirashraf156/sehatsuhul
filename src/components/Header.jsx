@@ -28,7 +28,7 @@ export default function Header() {
       <div className="container header-inner">
         <Link to="/" className="logo">
           <div className="logo-icon">🩺</div>
-          <span>Sehat<span className="c-teal">Suhul</span></span>
+          <span>Sehat<span className="c-teal">Sehul</span></span>
         </Link>
 
         <nav className="nav-links">

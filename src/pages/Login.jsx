@@ -34,7 +34,7 @@ export default function Login() {
           <p>{role === 'patient'
             ? 'Book certified nurses and lab tests from the comfort of your home. 24/7.'
             : role === 'nurse' ? 'Manage your bookings, availability, and patient care all in one place.'
-            : 'Manage the SehatSuhul platform, verify nurses, and monitor bookings.'}</p>
+            : 'Manage the SehatSehul platform, verify nurses, and monitor bookings.'}</p>
           <div className="as-trust">
             <span>✅ Secure Login</span>
             <span>🔒 JWT Protected</span>

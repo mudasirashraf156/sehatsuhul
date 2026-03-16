@@ -35,7 +35,7 @@ export default function AdminLogin() {
           <form onSubmit={submit}>
             <div className="field">
               <label>Admin Email</label>
-              <input type="email" placeholder="admin@sehatsuhul.pk"
+              <input type="email" placeholder="admin@sehatsehul.pk"
                 value={form.email} onChange={e => setForm({...form, email: e.target.value})} required/>
             </div>
             <div className="field">

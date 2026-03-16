@@ -14,7 +14,7 @@ export default function Footer() {
           <Link to="/" className="footer-logo">
             <div className="footer-logo-icon">🩺</div>
             <span>
-              Sehat<span>Suhul</span>
+              Sehat<span>Sehul</span>
             </span>
           </Link>
 
@@ -65,7 +65,7 @@ export default function Footer() {
 
         <div className="container footer-bottom-inner">
 
-          <span>© 2025 SehatSuhul. All rights reserved.</span>
+          <span>© 2025 sehatsehul. All rights reserved.</span>
 
           <div>
             <Link to="/privacy">Privacy</Link>
