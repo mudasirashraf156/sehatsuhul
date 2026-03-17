@@ -54,7 +54,7 @@ export default function Footer() {
           <Link to="/scan">Free Prescription Help</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/terms">Terms</Link>
+          <Link to="/terms">About Us</Link>
         </div>
 
       </div>
@@ -66,12 +66,6 @@ export default function Footer() {
         <div className="container footer-bottom-inner">
 
           <span>© 2025 sehatsehul. All rights reserved.</span>
-
-          <div>
-            <Link to="/privacy">Privacy</Link>
-            <Link to="/terms">Terms</Link>
-            <Link to="/contact">Support</Link>
-          </div>
 
         </div>
 

@@ -67,72 +67,187 @@ export function About() {
 }
 
 export function Contact() {
-  const [form, setForm] = useState({ name:'', email:'', subject:'', message:'' });
-  const [sent, setSent] = useState(false);
-  const h = e => setForm({...form,[e.target.name]:e.target.value});
-  const submit = e => { e.preventDefault(); setSent(true); };
   return (
-    <div className="static-page">
-      <h1 className="static-h1">Contact Us</h1>
-      <div className="contact-grid">
-        <div>
-          <p className="contact-info">Need assistance? Reach out via phone, email, or WhatsApp — we’re here to help 24/7.</p>
-          <div className="contact-details">
-            {[
-              { icon:'📞', label:'Phone', value:'70062 73733 / 70066 59980', href:'tel:+917006273733' },
-              { icon:'📧', label:'Email', value:'sehatsehul@gmail.com', href:'mailto:sehatsehul@gmail.com' },
-              { icon:'💬', label:'WhatsApp', value:'+91 77809 06971', href:'https://wa.me/917780906971' },
-              {
-                icon:'🌐',
-                label:'Social',
-                links: [
-                  { icon:'📘', label:'Facebook', href:'https://www.facebook.com/sehatsehul' },
-                  { icon:'📸', label:'Instagram', href:'https://www.instagram.com/sehatsehul' },
-                ]
-              }
-            ].map((item) => (
-              <div key={item.label} className="contact-item">
-                <span className="contact-item-icon">{item.icon}</span>
-                <div className="contact-item-content">
-                  <small>{item.label}</small>
-                  {item.links ? (
-                    <div style={{display:'flex', gap:12, flexWrap:'wrap'}}>
-                      {item.links.map(link => (
-                        <a key={link.label} href={link.href} target="_blank" rel="noreferrer" style={{display:'inline-flex', alignItems:'center', gap:6, color:'inherit', textDecoration:'none'}}>
-                          <span>{link.icon}</span>
-                          <span>{link.label}</span>
-                        </a>
-                      ))}
-                    </div>
-                  ) : item.href ? (
-                    <div>
-                      <a href={item.href} target="_blank" rel="noreferrer" style={{color:'inherit', textDecoration:'none'}}>{item.value}</a>
-                    </div>
-                  ) : (
-                    <div>{item.value}</div>
-                  )}
-                </div>
-              </div>
-            ))}
+    <div className="contact-page">
+
+      {/* Hero */}
+      <div className="contact-hero">
+        <div className="contact-hero-inner">
+          <div className="contact-tag">📍 Based in Kashmir</div>
+          <h1>Get in Touch</h1>
+          <p>We're here to help 24/7. Reach us through any channel below.</p>
+        </div>
+      </div>
+
+      <div className="contact-body">
+
+        {/* Top Cards */}
+        <div className="contact-cards">
+          <a href="tel:+917006273733" className="contact-card">
+            <div className="cc-icon phone">📞</div>
+            <div className="cc-label">Call Us</div>
+            <div className="cc-val">70062 73733</div>
+            <div className="cc-val">70066 59980</div>
+            <div className="cc-hint">Mon–Sat, 9AM–8PM</div>
+          </a>
+          <a href="mailto:sehatsehul@gmail.com" className="contact-card">
+            <div className="cc-icon email">📧</div>
+            <div className="cc-label">Email Us</div>
+            <div className="cc-val">sehatsehul@gmail.com</div>
+            <div className="cc-hint">Reply within 24 hours</div>
+          </a>
+          <a href="https://wa.me/917780906971" target="_blank" rel="noreferrer" className="contact-card">
+            <div className="cc-icon whatsapp">💬</div>
+            <div className="cc-label">WhatsApp</div>
+            <div className="cc-val">+91 77809 06971</div>
+            <div className="cc-hint">Fastest response</div>
+          </a>
+          <div className="contact-card no-link">
+            <div className="cc-icon hours">🕐</div>
+            <div className="cc-label">Working Hours</div>
+            <div className="cc-val">Mon – Sat</div>
+            <div className="cc-val">9:00 AM – 8:00 PM</div>
+            <div className="cc-hint">Emergency: 24/7</div>
           </div>
         </div>
-        {sent ? (
-          <div className="card" style={{textAlign:'center',padding:48}}>
-            <div style={{fontSize:48,marginBottom:16}}>✅</div>
-            <h3 style={{fontSize:20,fontFamily:"'Playfair Display',serif",marginBottom:8}}>Message Sent!</h3>
-            <p style={{color:'var(--muted)'}}>We'll get back to you within 24 hours.</p>
+
+        {/* Bottom: Office + Social + Map */}
+        <div className="contact-bottom">
+
+          {/* Office Info */}
+          <div className="card contact-office">
+            <div className="co-header">
+              <div className="co-icon">🏢</div>
+              <div>
+                <h3>Our Office</h3>
+                <p>Visit us or send mail to our registered address</p>
+              </div>
+            </div>
+            <div className="co-divider"/>
+            <div className="co-rows">
+              <div className="co-row">
+                <span className="co-row-icon">📍</span>
+                <div>
+                  <div className="co-row-label">Address</div>
+                  <div className="co-row-val">Budgam, Srinagar<br/>Jammu & Kashmir — 191111</div>
+                </div>
+              </div>
+              <div className="co-row">
+                <span className="co-row-icon">🇮🇳</span>
+                <div>
+                  <div className="co-row-label">Region</div>
+                  <div className="co-row-val">Jammu & Kashmir, India</div>
+                </div>
+              </div>
+              <div className="co-row">
+                <span className="co-row-icon">🏥</span>
+                <div>
+                  <div className="co-row-label">Service Area</div>
+                  <div className="co-row-val">Srinagar · Budgam · Anantnag<br/>Baramulla · Pulwama · Kupwara</div>
+                </div>
+              </div>
+              <div className="co-row">
+                <span className="co-row-icon">📋</span>
+                <div>
+                  <div className="co-row-label">Registration</div>
+                  <div className="co-row-val">Registered Healthcare Platform<br/>J&K, India — 2024</div>
+                </div>
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="card">
-            <form onSubmit={submit}>
-              <div className="field"><label>Full Name</label><input name="name" value={form.name} onChange={h} required/></div>
-              <div className="field"><label>Email</label><input name="email" type="email" value={form.email} onChange={h} required/></div>
-              <div className="field"><label>Subject</label><input name="subject" value={form.subject} onChange={h} required/></div>
-              <div className="field"><label>Message</label><textarea name="message" rows={5} value={form.message} onChange={h} required/></div>
-              <button type="submit" className="btn btn-teal" style={{width:'100%',justifyContent:'center'}}>📤 Send Message</button>
-            </form>
+
+          {/* Right column */}
+          <div className="contact-right">
+
+            {/* Social */}
+            <div className="card contact-social">
+              <h3>Follow Us</h3>
+              <p>Stay updated with health tips, nurse stories & platform news</p>
+              <div className="social-links-grid">
+                <a href="https://www.facebook.com/sehatsehul" target="_blank" rel="noreferrer" className="social-link-card facebook">
+                  <span>📘</span>
+                  <div>
+                    <strong>Facebook</strong>
+                    <small>@sehatsehul</small>
+                  </div>
+                  <span className="sl-arrow">↗</span>
+                </a>
+                <a href="https://www.instagram.com/sehatsehul" target="_blank" rel="noreferrer" className="social-link-card instagram">
+                  <span>📸</span>
+                  <div>
+                    <strong>Instagram</strong>
+                    <small>@sehatsehul</small>
+                  </div>
+                  <span className="sl-arrow">↗</span>
+                </a>
+                <a href="https://wa.me/917780906971" target="_blank" rel="noreferrer" className="social-link-card whatsapp">
+                  <span>💬</span>
+                  <div>
+                    <strong>WhatsApp</strong>
+                    <small>Chat with us</small>
+                  </div>
+                  <span className="sl-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Map Embed */}
+            <div className="card contact-map-card">
+              <h3>Our Location</h3>
+              <p>Budgam, Srinagar — Jammu & Kashmir</p>
+              <div className="map-wrap">
+                <iframe
+                  title="SehatSehul Office Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105688.1!2d74.6!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e18fda00000001%3A0x1!2sBudgam%2C+Jammu+and+Kashmir!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="200"
+                  style={{ border: 'none', borderRadius: 12 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <a
+                href="https://maps.google.com/?q=Budgam,Jammu+and+Kashmir"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline btn-sm"
+                style={{ marginTop: 14, display: 'inline-flex' }}
+              >
+                📍 Open in Google Maps
+              </a>
+            </div>
+
           </div>
-        )}
+        </div>
+
+        {/* Bottom strip */}
+        <div className="contact-strip">
+          <div className="cs-item">
+            <span>🚑</span>
+            <div>
+              <strong>Medical Emergency?</strong>
+              <p>Call 108 or visit your nearest hospital immediately</p>
+            </div>
+          </div>
+          <div className="cs-divider"/>
+          <div className="cs-item">
+            <span>👩‍⚕️</span>
+            <div>
+              <strong>Want to join as a Nurse?</strong>
+              <p>Register on our platform and start receiving bookings</p>
+            </div>
+          </div>
+          <div className="cs-divider"/>
+          <div className="cs-item">
+            <span>🩺</span>
+            <div>
+              <strong>Need care at home?</strong>
+              <p>Book a certified nurse in under 5 minutes</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

@@ -87,7 +87,7 @@ export default function Header() {
           <Link to="/services">🧪 Services</Link>
           <Link to="/about">ℹ️ About</Link>
           <Link to="/contact">📞 Contact</Link>
-          <Link to="/privacy">🔒 Privacy</Link>
+          <Link to="/scan"> Scan prescription</Link>
           {user ? (
             <>
               <Link to={dashPath}>📊 Dashboard</Link>
