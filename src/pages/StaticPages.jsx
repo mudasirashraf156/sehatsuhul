@@ -5,8 +5,14 @@ import './StaticPages.css';
 
 export function Services() {
   const services = [
-    { icon:'💉', title:'IV Therapy', desc:'Professional IV drip administration including fluids, vitamins, antibiotics, and medications at home by certified nurses.', price:'₨1,500+', image:'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&crop=center' },
-    { icon:'🩹', title:'Wound Care & Dressing', desc:'Expert wound cleaning, dressing changes, post-surgical suture care, and pressure ulcer management.', price:'₨800+', image:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center' },
+    {
+  icon:'💉',
+  title:'IV Therapy',
+  desc:'Professional IV drip administration including fluids, vitamins, antibiotics, and medications at home by certified nurses.',
+  price:'₨1,500+',
+  image:'https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&h=300&fit=crop&crop=center'
+},
+     { icon:'🩹', title:'Wound Care & Dressing', desc:'Expert wound cleaning, dressing changes, post-surgical suture care, and pressure ulcer management.', price:'₨800+', image:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center' },
     { icon:'💊', title:'Medication Administration', desc:'Supervised oral, IM, and IV medication administration with monitoring for side effects.', price:'₨600+', image:'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop&crop=center' },
     { icon:'🩸', title:'Home Blood Tests', desc:'Professional sample collection for complete blood count, sugar, lipids, and all standard lab tests.', price:'₨500+', image:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop&crop=center' },
     { icon:'👶', title:'Pediatric Nursing', desc:'Specialized care for children and newborns including vaccination support and pediatric assessments.', price:'₨1,000+', image:'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&crop=center' },
@@ -129,7 +135,7 @@ export function Contact() {
                 <span className="co-row-icon">📍</span>
                 <div>
                   <div className="co-row-label">Address</div>
-                  <div className="co-row-val">Budgam, Srinagar<br/>Jammu & Kashmir — 191111</div>
+                  <div className="co-row-val">Srinagar<br/>Jammu & Kashmir — 191111</div>
                 </div>
               </div>
               <div className="co-row">
@@ -143,7 +149,10 @@ export function Contact() {
                 <span className="co-row-icon">🏥</span>
                 <div>
                   <div className="co-row-label">Service Area</div>
-                  <div className="co-row-val">Srinagar · Budgam · Anantnag<br/>Baramulla · Pulwama · Kupwara</div>
+               <div className="co-row-val">
+  Srinagar · Budgam · Anantnag · Baramulla · Pulwama · Kupwara · Bandipora · Ganderbal · Kulgam · Shopian<br/>
+   · Samba · Kathua · Udhampur · Reasi · Doda · Kishtwar · Ramban · Rajouri · Poonch
+</div>
                 </div>
               </div>
               <div className="co-row">
@@ -194,7 +203,7 @@ export function Contact() {
             {/* Map Embed */}
             <div className="card contact-map-card">
               <h3>Our Location</h3>
-              <p>Budgam, Srinagar — Jammu & Kashmir</p>
+              <p>Srinagar — Jammu & Kashmir</p>
               <div className="map-wrap">
                 <iframe
                   title="SehatSehul Office Location"
@@ -208,7 +217,7 @@ export function Contact() {
                 />
               </div>
               <a
-                href="https://maps.google.com/?q=Budgam,Jammu+and+Kashmir"
+                href="https://maps.google.com/?q=Srinagar,Jammu+and+Kashmir"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-outline btn-sm"

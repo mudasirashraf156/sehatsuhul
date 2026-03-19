@@ -1,0 +1,114 @@
+.rshop-page { min-height: calc(100vh - 68px); }
+.rshop-hero {
+  background: linear-gradient(135deg, var(--teal-xl), var(--white));
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+.rshop-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; color: var(--slate); margin-bottom: 6px;
+}
+.rshop-hero p { color: var(--muted); font-size: 14px; }
+.rshop-body { padding: 32px 24px 60px; max-width: 760px; margin: 0 auto; }
+.rshop-steps {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin-bottom: 32px;
+}
+.rshop-step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  padding: 0 20px;
+  border-right: 1px solid var(--border);
+}
+.rshop-step:last-child { border-right: none; }
+.rshop-step.active { color: var(--teal); }
+.rshop-step.done { color: #16a34a; }
+.rshop-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+}
+.rshop-step.active .rshop-step-num { background: var(--teal); color: white; border-color: var(--teal); }
+.rshop-step.done .rshop-step-num { background: #16a34a; color: white; border-color: #16a34a; }
+.rshop-fee-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  border-radius: 14px; padding: 18px 24px;
+  margin-bottom: 24px; gap: 12px;
+}
+.rshop-fee-banner strong { display: block; color: white; font-size: 15px; margin-bottom: 3px; }
+.rshop-fee-banner span { color: rgba(255,255,255,.75); font-size: 13px; }
+.fee-badge {
+  background: rgba(255,255,255,.2); color: white;
+  font-size: 22px; font-weight: 700;
+  padding: 10px 20px; border-radius: 12px;
+  flex-shrink: 0;
+}
+.rshop-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px;
+  margin-bottom: 16px;
+}
+.rshop-section h3 {
+  font-size: 15px; font-weight: 700; color: var(--slate);
+  margin-bottom: 18px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.check-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--slate); cursor: pointer;
+  margin-top: 8px;
+}
+.check-label input { accent-color: var(--teal); width: 16px; height: 16px; }
+.services-check-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+}
+.service-check-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px; border: 1.5px solid var(--border);
+  border-radius: 10px; cursor: pointer; font-size: 13px;
+  transition: all .15s;
+}
+.service-check-item input { accent-color: var(--teal); }
+.service-check-item.checked { border-color: var(--teal); background: var(--teal-l); color: var(--teal-d); }
+.image-upload-zone {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 32px; text-align: center; cursor: pointer;
+  transition: all .2s; background: var(--bg);
+}
+.image-upload-zone:hover { border-color: var(--teal); background: var(--teal-xl); }
+.iuz-content { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.iuz-content div { font-size: 36px; }
+.iuz-content strong { font-size: 14px; color: var(--slate); }
+.iuz-content span { font-size: 12px; color: var(--muted); }
+/* Payment */
+.rshop-payment { max-width: 480px; margin: 0 auto; }
+.payment-card { padding: 40px; text-align: center; }
+.payment-icon { font-size: 48px; margin-bottom: 16px; }
+.payment-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; color: var(--slate); margin-bottom: 8px;
+}
+.payment-card > p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.payment-amount {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;
+}
+.payment-amount span { font-size: 14px; color: var(--muted); }
+.payment-amount strong { font-size: 24px; font-weight: 700; color: var(--slate); }
+.payment-methods h4 { font-size: 14px; color: var(--slate); margin-bottom: 12px; text-align: left; }
+.upi-box {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; text-align: left;
+}
+.upi-row {
+  display: flex; justify-content: space-between;
+  padding: 7px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.upi-row:last-child { border-bottom: none; }
+.upi-row span { color: var(--muted); }
+.upi-row strong { color: var(--slate); }

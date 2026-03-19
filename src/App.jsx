@@ -20,6 +20,9 @@ import AdminDashboard from './pages/AdminDashboard';
 import { Services, About, Contact, Review, Privacy } from './pages/StaticPages';
 import AdminLogin from './pages/AdminLogin';
 import ScanHelp from './pages/ScanHelp';
+import MedicalShops from './pages/MedicalShops';
+import RegisterShop from './pages/RegisterShop';
+import ShopDashboard from './pages/ShopDashboard';
 import './index.css';
 
 function AppRoutes() {
@@ -38,7 +41,11 @@ function AppRoutes() {
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/login"   element={user ? <Navigate to={user.role === 'nurse' ? '/nurse/dashboard' : user.role === 'admin' ? '/admin' : '/patient/dashboard'}/> : <Login />} />
       <Route path="/register" element={user ? <Navigate to="/"/> : <Register />} />
-
+<Route path="/shops"          element={<MedicalShops />} />
+<Route path="/shops/register" element={<RegisterShop />} />
+<Route path="/shop/dashboard" element={
+  <PrivateRoute role="shopOwner"><ShopDashboard /></PrivateRoute>
+}/>
       {/* Patient routes */}
       <Route path="/patient/dashboard" element={<PrivateRoute role="patient"><PatientDashboard /></PrivateRoute>} />
       <Route path="/patient/bookings"  element={<PrivateRoute role="patient"><PatientBookings /></PrivateRoute>} />

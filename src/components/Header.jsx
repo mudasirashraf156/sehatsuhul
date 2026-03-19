@@ -20,7 +20,11 @@ export default function Header() {
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
   const doLogout = () => { logout(); navigate('/'); setOpen(false); };
-  const dashPath = user?.role === 'admin' ? '/admin' : user?.role === 'nurse' ? '/nurse/dashboard' : '/patient/dashboard';
+const dashPath =
+  user?.role === 'admin'      ? '/admin' :
+  user?.role === 'nurse'      ? '/nurse/dashboard' :
+  user?.role === 'shopOwner'  ? '/shop/dashboard' :
+  '/patient/dashboard';
   const isActive = (p) => location.pathname === p || location.pathname.startsWith(p + '/');
 
   return (
@@ -36,6 +40,7 @@ export default function Header() {
           <Link to="/nurses" className={isActive('/nurses') ? 'active' : ''}>Find Nurses</Link>
           <Link to="/services" className={isActive('/services') ? 'active' : ''}>Services</Link>
           <Link to="/about" className={isActive('/about') ? 'active' : ''}>About</Link>
+          <Link to="/shops" className={isActive('/shops') ? 'active' : ''}>💊 Medical Shops</Link>
           <Link to="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link>
           <Link to="/scan" className={isActive('/scan') ? 'active' : ''}>
   🆓 Free Help
