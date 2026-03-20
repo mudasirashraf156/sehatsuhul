@@ -1,4 +1,4 @@
-.header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 12px rgba(0,0,0,.06)}
+/* .header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 12px rgba(0,0,0,.06)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:22px;color:var(--slate);text-decoration:none;font-weight:700}
 .logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--teal),#14b8a6);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
@@ -8,7 +8,6 @@
 .nav-links a:hover,.nav-links a.active{color:var(--teal);background:var(--teal-xl)}
 .header-right{display:flex;align-items:center;gap:10px}
 .auth-btns{display:flex;gap:8px}
-/* User menu */
 .user-menu{position:relative}
 .avatar-btn{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px 6px 6px;cursor:pointer;transition:all .2s}
 .avatar-btn:hover{border-color:var(--teal)}
@@ -20,7 +19,6 @@
 .role-pill.nurse{background:var(--rose-l);color:var(--rose)}
 .role-pill.admin{background:#dbeafe;color:#1d4ed8}
 .chevron{font-size:9px;color:var(--muted);margin-left:2px}
-/* Dropdown */
 .dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:8px;min-width:220px;box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:300;animation:fadeUp .15s ease}
 .dropdown-header{padding:12px;border-bottom:1px solid var(--border);margin-bottom:4px}
 .dh-name{font-weight:600;font-size:14px;color:var(--slate)}
@@ -29,12 +27,174 @@
 .dd-item:hover{background:var(--bg)}
 .dd-divider{height:1px;background:var(--border);margin:6px 0}
 .dd-logout{color:var(--rose)!important}
-/* Hamburger */
+
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--slate);border-radius:2px;transition:all .3s}
-/* Mobile nav */
 .mobile-nav{display:none;flex-direction:column;padding:12px 20px 20px;border-top:1px solid var(--border);background:var(--white);gap:2px}
 .mobile-nav a,.mobile-nav button{padding:12px 14px;font-size:15px;font-weight:500;color:var(--slate);text-decoration:none;border:none;background:none;text-align:left;cursor:pointer;border-radius:10px;transition:background .15s}
 .mobile-nav a:hover,.mobile-nav button:hover{background:var(--bg)}
 .mob-signup{background:var(--teal)!important;color:white!important;text-align:center!important;border-radius:50px!important;margin-top:4px}
-@media(max-width:900px){.nav-links{display:none}.auth-btns{display:none}.hamburger{display:flex}.mobile-nav{display:flex}}
+@media(max-width:900px){.nav-links{display:none}.auth-btns{display:none}.hamburger{display:flex}.mobile-nav{display:flex}} */
+
+/* ── COMING SOON OVERLAY ── */
+.site-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+.overlay-blur {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 13, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: -1;
+}
+.overlay-content {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 52px 44px;
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
+  color: white;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+}
+.overlay-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+.overlay-logo-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: #0d9488;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 0 20px rgba(13,148,136,.5);
+}
+.overlay-logo span { color: white; }
+.overlay-logo span span { color: #14b8a6; }
+.overlay-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(13,148,136,.15);
+  border: 1px solid rgba(13,148,136,.3);
+  color: #14b8a6;
+  font-size: 12px; font-weight: 700;
+  padding: 6px 16px; border-radius: 50px;
+  letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.overlay-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #14b8a6;
+  animation: blink 1.8s infinite;
+}
+.overlay-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700; color: white;
+  line-height: 1.25; margin-bottom: 14px;
+}
+.overlay-content > p {
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 420px;
+  margin-left: auto; margin-right: auto;
+}
+.overlay-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-bottom: 28px;
+}
+.overlay-features div {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px; padding: 10px 14px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.75);
+  transition: background .2s;
+}
+.overlay-features div:hover {
+  background: rgba(13,148,136,.15);
+  border-color: rgba(13,148,136,.3);
+}
+.overlay-actions {
+  display: flex; gap: 10px;
+  justify-content: center; flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.overlay-btn-primary {
+  background: #0d9488; color: white;
+  padding: 12px 24px; border-radius: 50px;
+  font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: all .2s;
+  border: none; cursor: pointer;
+}
+.overlay-btn-primary:hover {
+  background: #0f766e;
+  box-shadow: 0 6px 20px rgba(13,148,136,.4);
+  transform: translateY(-1px);
+}
+.overlay-btn-secondary {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.15);
+  color: white; padding: 12px 24px;
+  border-radius: 50px; font-size: 14px;
+  font-weight: 600; text-decoration: none;
+  transition: all .2s;
+}
+.overlay-btn-secondary:hover {
+  background: rgba(255,255,255,.12);
+  transform: translateY(-1px);
+}
+.overlay-contact {
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 20px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.overlay-admin-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,.25);
+  margin-top: 16px;
+}
+.overlay-unlock-btn {
+  background: none; border: none;
+  color: rgba(255,255,255,.4);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; text-decoration: underline;
+  text-underline-offset: 2px;
+  font-family: 'DM Sans', sans-serif;
+  transition: color .2s;
+}
+.overlay-unlock-btn:hover { color: #14b8a6; }
+
+@media (max-width: 480px) {
+  .overlay-content { padding: 36px 24px; }
+  .overlay-features { grid-template-columns: 1fr 1fr; }
+  .overlay-actions { flex-direction: column; }
+  .overlay-btn-primary,
+  .overlay-btn-secondary { text-align: center; }
+}
