@@ -32,3 +32,31 @@
 .demo-box{background:var(--bg);border:1px dashed var(--border);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
 .demo-box strong{color:var(--slate)}
 @media(max-width:680px){.auth-wrap{grid-template-columns:1fr}.auth-side{display:none}.auth-form-panel{padding:32px 24px}}
+.terms-check-wrap {
+  margin-bottom: 16px;
+}
+.terms-check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.terms-check-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+}
+.terms-check-label a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+}
+.terms-check-label a:hover {
+  text-decoration: underline;
+}

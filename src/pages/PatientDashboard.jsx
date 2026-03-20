@@ -55,9 +55,9 @@ export default function PatientDashboard() {
             <Link to="/nurses" className="qa-card">
               <span>👩‍⚕️</span><strong>Find a Nurse</strong><p>Browse verified nurses near you</p>
             </Link>
-            <Link to="/services" className="qa-card">
-              <span>🧪</span><strong>Book Lab Test</strong><p>Home sample collection</p>
-            </Link>
+           <Link to="/book-test" className="qa-card">
+  <span>🧪</span><strong>Book Lab Test</strong><p>Home sample collection</p>
+</Link>
             <Link to="/profile" className="qa-card">
               <span>👤</span><strong>My Profile</strong><p>Update your info</p>
             </Link>

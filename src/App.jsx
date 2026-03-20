@@ -23,6 +23,9 @@ import ScanHelp from './pages/ScanHelp';
 import MedicalShops from './pages/MedicalShops';
 import RegisterShop from './pages/RegisterShop';
 import ShopDashboard from './pages/ShopDashboard';
+import BookLabTest     from './pages/BookLabTest';
+import PatientLabTests from './pages/PatientLabTests';
+import { TermsAndConditions, PrivacyPolicy } from './pages/StaticPages';
 import './index.css';
 
 function AppRoutes() {
@@ -38,11 +41,14 @@ function AppRoutes() {
       <Route path="/services" element={<Services />} />
       <Route path="/about"   element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/privacy" element={<Privacy />} />
+      <Route path="/terms"   element={<TermsAndConditions />} />
+<Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/login"   element={user ? <Navigate to={user.role === 'nurse' ? '/nurse/dashboard' : user.role === 'admin' ? '/admin' : '/patient/dashboard'}/> : <Login />} />
       <Route path="/register" element={user ? <Navigate to="/"/> : <Register />} />
 <Route path="/shops"          element={<MedicalShops />} />
 <Route path="/shops/register" element={<RegisterShop />} />
+<Route path="/book-test"        element={<BookLabTest />} />
+<Route path="/patient/labtests" element={<PrivateRoute role="patient"><PatientLabTests /></PrivateRoute>} />
 <Route path="/shop/dashboard" element={
   <PrivateRoute role="shopOwner"><ShopDashboard /></PrivateRoute>
 }/>

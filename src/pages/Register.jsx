@@ -8,6 +8,7 @@ export default function Register() {
   const [role, setRole] = useState(params.get('role') || 'patient');
   const [form, setForm] = useState({ firstName:'',lastName:'',email:'',phone:'',password:'',city:'',specialization:'',licenseNumber:'' });
   const [error, setError] = useState('');
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -120,10 +121,30 @@ export default function Register() {
                 🏪 After registering, you can list your medical shop from your dashboard. A one-time fee of ₹499/year applies for listing.
               </div>
             )}
-
-            <button type="submit" className={`auth-submit ${role === 'shopOwner' ? 'patient' : role}`} disabled={loading}>
-              {loading ? <span className="spinner"/> : `Create ${role === 'patient' ? 'Patient' : role === 'nurse' ? 'Nurse' : 'Shop Owner'} Account`}
-            </button>
+<div className="terms-check-wrap">
+  <label className="terms-check-label">
+    <input
+      type="checkbox"
+      checked={agreed}
+      onChange={e => setAgreed(e.target.checked)}
+      required
+    />
+    <span>
+      I have read and agree to the{' '}
+      <a href="/terms" target="_blank" rel="noreferrer">Terms & Conditions</a>
+      {' '}and{' '}
+      <a href="/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>
+      {' '}of SehatSehul
+    </span>
+  </label>
+</div>
+           <button
+  type="submit"
+  className={`auth-submit ${role === 'shopOwner' ? 'patient' : role}`}
+  disabled={loading || !agreed}
+>
+  {loading ? <span className="spinner"/> : `Create ${role === 'patient' ? 'Patient' : role === 'nurse' ? 'Nurse' : 'Shop Owner'} Account`}
+</button>
           </form>
 
           <p className="auth-switch">Already have an account? <Link to={`/login?role=${role}`}>Sign in →</Link></p>

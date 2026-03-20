@@ -7,24 +7,27 @@ export default function AdminDashboard() {
   const [stats, setStats]   = useState(null);
   const [nurses, setNurses] = useState([]);
   const [users, setUsers]   = useState([]);
+  const [labOrders, setLabOrders] = useState([]);
   const [shops, setShops]   = useState([]);
   const [tab, setTab]       = useState('overview');
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    Promise.all([
-      axios.get('/api/admin/stats'),
-      axios.get('/api/admin/nurses'),
-      axios.get('/api/admin/users'),
-      axios.get('/api/shops/admin/all').catch(() => ({ data: [] })),
-    ]).then(([s, n, u, sh]) => {
-      setStats(s.data);
-      setNurses(n.data);
-      setUsers(u.data);
-      setShops(sh.data);
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, []);
+useEffect(() => {
+  Promise.all([
+    axios.get('/api/admin/stats'),
+    axios.get('/api/admin/nurses'),
+    axios.get('/api/admin/users'),
+    axios.get('/api/labtests/admin/all').catch(() => ({ data: [] })),
+    axios.get('/api/shops/admin/all').catch(() => ({ data: [] })),
+  ]).then(([s, n, u, lo, sh]) => {
+    setStats(s.data);
+    setNurses(n.data);
+    setUsers(u.data);
+    setLabOrders(lo.data);
+    setShops(sh.data);
+    setLoading(false);
+  }).catch(() => setLoading(false));
+}, []);
 
   const verifyNurse = async (nurseId, val) => {
     await axios.patch(`/api/admin/nurses/${nurseId}/verify`, { verify: val });
@@ -92,6 +95,7 @@ export default function AdminDashboard() {
             { key: 'nurses',   label: '👩‍⚕️ Nurses' },
             { key: 'users',    label: '👥 Users' },
             { key: 'shops',    label: `🏪 Shops${pendingShops > 0 ? ` (${pendingShops})` : ''}` },
+            { key: 'labtests', label: `🧪 Lab Tests${labOrders.filter(o=>o.status==='pending').length > 0 ? ` (${labOrders.filter(o=>o.status==='pending').length})` : ''}` },
           ].map(t => (
             <button key={t.key} className={tab === t.key ? 'active' : ''} onClick={() => setTab(t.key)}>
               {t.label}
@@ -295,7 +299,78 @@ export default function AdminDashboard() {
             </div>
           </div>
         )}
-
+{tab === 'labtests' && (
+  <div>
+    <h3 className="admin-section-title">Lab Test Orders ({labOrders.length})</h3>
+    <div className="admin-table">
+      <table>
+        <thead>
+          <tr><th>Patient</th><th>Tests</th><th>Date & Time</th><th>Location</th><th>Amount</th><th>Status</th><th>Manage</th></tr>
+        </thead>
+        <tbody>
+          {labOrders.map(o => (
+            <tr key={o._id} style={{background: o.status === 'pending' ? '#fffbeb' : ''}}>
+              <td>
+                <strong>{o.patient?.firstName} {o.patient?.lastName}</strong>
+                <br/><small>{o.patient?.phone}</small>
+                <br/><small>{o.patient?.email}</small>
+              </td>
+              <td style={{maxWidth:200,fontSize:12}}>{o.tests?.join(', ')}</td>
+              <td>
+                {new Date(o.bookingDate).toLocaleDateString()}<br/>
+                <small>{o.timeSlot}</small>
+              </td>
+              <td>{o.city}<br/><small>{o.address}</small></td>
+              <td><strong>₹{o.totalAmount}</strong><br/><small>{o.isPaid ? '✅ Paid' : 'Cash'}</small></td>
+              <td>
+                <select
+                  value={o.status}
+                  onChange={async e => {
+                    const status = e.target.value;
+                    await axios.patch(`/api/labtests/admin/${o._id}`, { status });
+                    setLabOrders(labOrders.map(x => x._id === o._id ? {...x, status} : x));
+                  }}
+                  style={{fontSize:12,padding:'4px 8px',borderRadius:8,border:'1px solid var(--border)',fontFamily:'DM Sans,sans-serif'}}
+                >
+                  <option value="pending">⏳ Pending</option>
+                  <option value="confirmed">✅ Confirmed</option>
+                  <option value="sample_collected">🧪 Collected</option>
+                  <option value="processing">🔬 Processing</option>
+                  <option value="completed">✅ Completed</option>
+                  <option value="cancelled">❌ Cancelled</option>
+                </select>
+              </td>
+              <td>
+                <div style={{display:'flex',flexDirection:'column',gap:6}}>
+                  <input
+                    placeholder="Assign lab name"
+                    defaultValue={o.assignedLab}
+                    style={{fontSize:11,padding:'4px 8px',borderRadius:6,border:'1px solid var(--border)',width:130}}
+                    onBlur={async e => {
+                      await axios.patch(`/api/labtests/admin/${o._id}`, { assignedLab: e.target.value, status: o.status });
+                      setLabOrders(labOrders.map(x => x._id === o._id ? {...x, assignedLab: e.target.value} : x));
+                    }}
+                  />
+                  <input
+                    placeholder="Admin notes"
+                    defaultValue={o.adminNotes}
+                    style={{fontSize:11,padding:'4px 8px',borderRadius:6,border:'1px solid var(--border)',width:130}}
+                    onBlur={async e => {
+                      await axios.patch(`/api/labtests/admin/${o._id}`, { adminNotes: e.target.value, status: o.status });
+                    }}
+                  />
+                </div>
+              </td>
+            </tr>
+          ))}
+          {labOrders.length === 0 && (
+            <tr><td colSpan={7} style={{textAlign:'center',padding:'32px',color:'var(--muted)'}}>No lab test orders yet</td></tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}
       </div>
     </div>
   );
