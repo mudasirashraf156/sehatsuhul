@@ -9,7 +9,7 @@ export function Services() {
   const services = [
     // Nurse Services
     {
-      icon: '💉', category: 'Nursing',
+      icon: '💉',
       title: 'IV Therapy',
       desc: 'Professional IV drip administration including fluids, vitamins, antibiotics, and medications at home by certified nurses.',
       price: '₹1,500+',
@@ -18,7 +18,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🩹', category: 'Nursing',
+      icon: '🩹',
       title: 'Wound Care & Dressing',
       desc: 'Expert wound cleaning, dressing changes, post-surgical suture care, and pressure ulcer management.',
       price: '₹800+',
@@ -27,7 +27,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '💊', category: 'Nursing',
+      icon: '💊',
       title: 'Medication Administration',
       desc: 'Supervised oral, IM, and IV medication administration with monitoring for side effects.',
       price: '₹600+',
@@ -36,7 +36,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '👶', category: 'Nursing',
+      icon: '👶',
       title: 'Pediatric Nursing',
       desc: 'Specialized care for children and newborns including vaccination support and pediatric assessments.',
       price: '₹1,000+',
@@ -45,7 +45,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🧓', category: 'Nursing',
+      icon: '🧓',
       title: 'Elderly Care',
       desc: 'Full-time and part-time companion nursing, mobility assistance, and chronic condition management.',
       price: '₹900+',
@@ -54,7 +54,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🏥', category: 'Nursing',
+      icon: '🏥',
       title: 'Post-Op Recovery',
       desc: 'Professional post-operative monitoring, early mobilization, and recovery support at home.',
       price: '₹1,200+',
@@ -63,7 +63,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '❤️', category: 'Nursing',
+      icon: '❤️',
       title: 'Vital Signs Monitoring',
       desc: 'Regular blood pressure, oxygen, temperature, and pulse monitoring with detailed reports.',
       price: '₹500+',
@@ -72,7 +72,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🧬', category: 'Nursing',
+      icon: '🧬',
       title: 'ICU Home Care',
       desc: 'Critical care monitoring for high-dependency patients recovering at home with advanced equipment.',
       price: '₹2,500+',
@@ -83,7 +83,7 @@ export function Services() {
 
     // Lab Tests
     {
-      icon: '🩸', category: 'Lab Tests',
+      icon: '🩸',
       title: 'Complete Blood Count',
       desc: 'Home sample collection for CBC, blood sugar, lipid profile and all standard diagnostic tests.',
       price: '₹300+',
@@ -92,7 +92,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🧪', category: 'Lab Tests',
+      icon: '🧪',
       title: 'Diabetes Panel',
       desc: 'Blood sugar fasting, random, HbA1c and full diabetes management panel at your doorstep.',
       price: '₹500+',
@@ -101,7 +101,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🫀', category: 'Lab Tests',
+      icon: '🫀', 
       title: 'Heart & Lipid Profile',
       desc: 'Complete cholesterol, triglycerides, HDL, LDL panel to assess cardiovascular health.',
       price: '₹600+',
@@ -110,7 +110,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🦋', category: 'Lab Tests',
+      icon: '🦋', 
       title: 'Thyroid Profile',
       desc: 'T3, T4 and TSH panel for complete thyroid function assessment from home.',
       price: '₹800+',
@@ -119,7 +119,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '☀️', category: 'Lab Tests',
+      icon: '☀️', 
       title: 'Vitamin Deficiency Panel',
       desc: 'Vitamin D, B12, iron studies and full nutritional deficiency assessment.',
       price: '₹900+',
@@ -128,7 +128,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🦠', category: 'Lab Tests',
+      icon: '🦠', 
       title: 'Infection Panel',
       desc: 'Dengue NS1, typhoid widal, COVID-19 antigen and full infection screening.',
       price: '₹500+',

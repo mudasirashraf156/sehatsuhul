@@ -24,7 +24,7 @@ export default function Footer() {
           </p>
 
           <div className="footer-contact-info">
-            <span>📞 +91 7006659980</span>
+            <span>📞 +91 7006273733</span>
             <span>✉️ info@sehatsehul.com</span>
             <span>📍Srinagar, Jammu and Kashmir</span>
           </div>
