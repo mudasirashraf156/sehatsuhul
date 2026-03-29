@@ -85,17 +85,25 @@ export default function MedicalShops() {
 function ShopCard({ shop }) {
   return (
     <div className="shop-card">
-      <div className="sc-image">
-        {shop.image ? (
-          <img src={`${axios.defaults.baseURL}/uploads/${shop.image}`} alt={shop.shopName} />
-        ) : (
-          <div className="sc-image-placeholder">🏪</div>
-        )}
-        {shop.isFeatured && <div className="sc-featured">⭐ Featured</div>}
-        {shop.isVerified && <div className="sc-verified">✓ Verified</div>}
-      </div>
+    <Link to={`/shops/${shop._id}`} className="sc-image-link">
+        <div className="sc-image">
+          {shop.image ? (
+            <img
+              src={`${axios.defaults.baseURL}/uploads/${shop.image}`}
+              alt={shop.shopName}
+            />
+          ) : (
+            <div className="sc-image-placeholder">🏪</div>
+          )}
+          {shop.isFeatured && <div className="sc-featured">⭐ Featured</div>}
+          {shop.isVerified && <div className="sc-verified">✓ Verified</div>}
+        </div>
+      </Link>
+
       <div className="sc-body">
-        <h3>{shop.shopName}</h3>
+        <Link to={`/shops/${shop._id}`} className="sc-name-link">
+          <h3>{shop.shopName}</h3>
+        </Link>
         <div className="sc-location">📍 {shop.address}, {shop.city}</div>
         {shop.description && <p className="sc-desc">{shop.description.slice(0, 90)}{shop.description.length > 90 ? '…' : ''}</p>}
         <div className="sc-tags">

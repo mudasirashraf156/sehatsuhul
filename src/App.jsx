@@ -4,7 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { PrivateRoute } from './components/Shared';
-
+import VerifyEmail from './pages/VerifyEmail';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -26,6 +26,7 @@ import ShopDashboard from './pages/ShopDashboard';
 import BookLabTest     from './pages/BookLabTest';
 import PatientLabTests from './pages/PatientLabTests';
 import { TermsAndConditions, PrivacyPolicy } from './pages/StaticPages';
+import ShopDetail from './pages/ShopDetail';
 import './index.css';
 
 function AppRoutes() {
@@ -48,6 +49,8 @@ function AppRoutes() {
 <Route path="/shops"          element={<MedicalShops />} />
 <Route path="/shops/register" element={<RegisterShop />} />
 <Route path="/book-test"        element={<BookLabTest />} />
+<Route path="/shops/:id" element={<ShopDetail />} />
+<Route path="/verify-email" element={<VerifyEmail />} />
 <Route path="/patient/labtests" element={<PrivateRoute role="patient"><PatientLabTests /></PrivateRoute>} />
 <Route path="/shop/dashboard" element={
   <PrivateRoute role="shopOwner"><ShopDashboard /></PrivateRoute>

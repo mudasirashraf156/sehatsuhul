@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axios from 'axios'; // Add this import
 import './Auth.css';
 
 export default function Login() {
@@ -8,13 +9,16 @@ export default function Login() {
   const [role, setRole] = useState(params.get('role') || 'patient');
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [errorData, setErrorData] = useState(null); // Add this state
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
-    setError(''); setLoading(true);
+    setError(''); 
+    setErrorData(null); // Clear error data
+    setLoading(true);
     try {
       const user = await login(form.email, form.password, role);
       navigate(
@@ -23,9 +27,14 @@ export default function Login() {
         '/patient/dashboard'
       );
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Check your credentials.');
+      const errorResponse = err.response?.data;
+      setError(errorResponse?.message || 'Login failed. Check your credentials.');
+      if (errorResponse?.notVerified) {
+        setErrorData(errorResponse); // Store the error data
+      }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const sideContent = {
@@ -101,14 +110,34 @@ export default function Login() {
               <button
                 key={t.key}
                 className={role === t.key ? 'active' : ''}
-                onClick={() => { setRole(t.key); setError(''); }}
+                onClick={() => { setRole(t.key); setError(''); setErrorData(null); }}
               >
                 {t.label}
               </button>
             ))}
           </div>
 
-          {error && <div className="alert alert-error">{error}</div>}
+          {/* Fixed error display - moved from submit function */}
+          {error && (
+            <div className="alert alert-error">
+              {error}
+              {errorData?.notVerified && (
+                <button 
+                  style={{marginLeft:8,color:'var(--teal)',fontWeight:600,background:'none',border:'none',cursor:'pointer'}}
+                  onClick={async () => {
+                    try {
+                      await axios.post('/api/auth/resend-verification', { email: form.email });
+                      alert('Verification email resent! Check your inbox.');
+                    } catch (err) {
+                      alert('Failed to resend verification email. Please try again.');
+                    }
+                  }}
+                >
+                  Resend email →
+                </button>
+              )}
+            </div>
+          )}
 
           <form onSubmit={submit}>
             <div className="field">
@@ -145,7 +174,6 @@ export default function Login() {
             <Link to={`/register?role=${role}`}>Create one →</Link>
           </p>
 
-         
         </div>
 
       </div>

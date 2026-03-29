@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Auth.css';
-
+import axios from 'axios';
 export default function Register() {
   const [params] = useSearchParams();
   const [role, setRole] = useState(params.get('role') || 'patient');
@@ -13,23 +13,26 @@ export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
   const h = e => setForm({...form, [e.target.name]: e.target.value});
-
-  const submit = async (e) => {
-    e.preventDefault();
-    if (form.password.length < 8) return setError('Password must be at least 8 characters');
-    setError(''); setLoading(true);
-    try {
-      const user = await register({ ...form, role });
-      navigate(
-        user.role === 'nurse'     ? '/nurse/dashboard' :
-        user.role === 'shopOwner' ? '/shop/dashboard'  :
-        '/patient/dashboard'
-      );
-    } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed. Please try again.');
-    }
-    setLoading(false);
-  };
+  const [success, setSuccess] = useState(false);
+const submit = async (e) => {
+  e.preventDefault();
+  if (form.password.length < 8) {
+    setError('Password must be at least 8 characters');
+    return; // Add return here to stop execution
+  }
+  setError(''); 
+  setLoading(true);
+  try {
+    await axios.post('/api/auth/register', { ...form, role });
+    setSuccess(true);
+  } catch (err) {
+    console.error('Registration error:', err.response?.data);
+    setError(err.response?.data?.message || 'Registration failed');
+    setLoading(false); // Add this to stop loading on error
+    return; // Return early to prevent success state
+  }
+  setLoading(false); // This will only run if try block succeeds
+};
 
   const sideContent = {
     patient: {
@@ -48,12 +51,25 @@ export default function Register() {
       icon: '🏪',
       title: 'List Your\nMedical Shop',
       desc: 'Register your shop on SehatSehul and reach thousands of patients across J&K.',
-      steps: ['1. Create your account', '2. Fill shop details & pay ₹499', '3. Admin approves & shop goes live!'],
+      steps: ['1. Create your account', '2. Fill shop details & pay ₹99', '3. Admin approves & shop goes live!'],
     },
   };
 
   const { icon, title, desc, steps } = sideContent[role];
-
+  if (success) return (
+  <div className="auth-page">
+    <div style={{maxWidth:480,margin:'60px auto',textAlign:'center',padding:'0 24px'}}>
+      <div style={{fontSize:64,marginBottom:20}}>📧</div>
+      <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:28,marginBottom:12}}>Check Your Email!</h2>
+      <p style={{color:'var(--muted)',lineHeight:1.7,marginBottom:24}}>
+        We sent a verification link to <strong>{form.email}</strong>.<br/>
+        Click the link in the email to activate your account.
+      </p>
+      <div className="alert alert-info">ℹ️ Check your spam folder if you don't see it within a few minutes.</div>
+      <Link to="/login" className="btn btn-teal" style={{marginTop:20,display:'inline-flex'}}>Go to Login →</Link>
+    </div>
+  </div>
+);
   return (
     <div className="auth-page">
       <div className="auth-wrap">
@@ -118,7 +134,7 @@ export default function Register() {
             {/* Shop Owner-only info */}
             {role === 'shopOwner' && (
               <div className="alert alert-info">
-                🏪 After registering, you can list your medical shop from your dashboard. A one-time fee of ₹499/year applies for listing.
+                🏪 After registering, you can list your medical shop from your dashboard. A one-time fee of ₹99/Month applies for listing.
               </div>
             )}
 <div className="terms-check-wrap">

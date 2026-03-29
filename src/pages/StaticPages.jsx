@@ -6,10 +6,10 @@ import './StaticPages.css';
 export function Services() {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const services = [
+ const services = [
     // Nurse Services
     {
-      icon: '💉',
+      icon: '💉', category: 'Nursing',
       title: 'IV Therapy',
       desc: 'Professional IV drip administration including fluids, vitamins, antibiotics, and medications at home by certified nurses.',
       price: '₹1,500+',
@@ -18,7 +18,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🩹',
+      icon: '🩹', category: 'Nursing',
       title: 'Wound Care & Dressing',
       desc: 'Expert wound cleaning, dressing changes, post-surgical suture care, and pressure ulcer management.',
       price: '₹800+',
@@ -27,7 +27,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '💊',
+      icon: '💊', category: 'Nursing',
       title: 'Medication Administration',
       desc: 'Supervised oral, IM, and IV medication administration with monitoring for side effects.',
       price: '₹600+',
@@ -36,7 +36,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '👶',
+      icon: '👶', category: 'Nursing',
       title: 'Pediatric Nursing',
       desc: 'Specialized care for children and newborns including vaccination support and pediatric assessments.',
       price: '₹1,000+',
@@ -45,7 +45,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🧓',
+      icon: '🧓', category: 'Nursing',
       title: 'Elderly Care',
       desc: 'Full-time and part-time companion nursing, mobility assistance, and chronic condition management.',
       price: '₹900+',
@@ -54,7 +54,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🏥',
+      icon: '🏥', category: 'Nursing',
       title: 'Post-Op Recovery',
       desc: 'Professional post-operative monitoring, early mobilization, and recovery support at home.',
       price: '₹1,200+',
@@ -63,7 +63,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '❤️',
+      icon: '❤️', category: 'Nursing',
       title: 'Vital Signs Monitoring',
       desc: 'Regular blood pressure, oxygen, temperature, and pulse monitoring with detailed reports.',
       price: '₹500+',
@@ -72,7 +72,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🧬',
+      icon: '🧬', category: 'Nursing',
       title: 'ICU Home Care',
       desc: 'Critical care monitoring for high-dependency patients recovering at home with advanced equipment.',
       price: '₹2,500+',
@@ -83,7 +83,7 @@ export function Services() {
 
     // Lab Tests
     {
-      icon: '🩸',
+      icon: '🩸', category: 'Lab Tests',
       title: 'Complete Blood Count',
       desc: 'Home sample collection for CBC, blood sugar, lipid profile and all standard diagnostic tests.',
       price: '₹300+',
@@ -92,7 +92,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🧪',
+      icon: '🧪', category: 'Lab Tests',
       title: 'Diabetes Panel',
       desc: 'Blood sugar fasting, random, HbA1c and full diabetes management panel at your doorstep.',
       price: '₹500+',
@@ -101,7 +101,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🫀', 
+      icon: '🫀', category: 'Lab Tests',
       title: 'Heart & Lipid Profile',
       desc: 'Complete cholesterol, triglycerides, HDL, LDL panel to assess cardiovascular health.',
       price: '₹600+',
@@ -110,7 +110,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🦋', 
+      icon: '🦋', category: 'Lab Tests',
       title: 'Thyroid Profile',
       desc: 'T3, T4 and TSH panel for complete thyroid function assessment from home.',
       price: '₹800+',
@@ -119,7 +119,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '☀️', 
+      icon: '☀️', category: 'Lab Tests',
       title: 'Vitamin Deficiency Panel',
       desc: 'Vitamin D, B12, iron studies and full nutritional deficiency assessment.',
       price: '₹900+',
@@ -128,7 +128,7 @@ export function Services() {
       image: 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&h=300&fit=crop&crop=center'
     },
     {
-      icon: '🦠', 
+      icon: '🦠', category: 'Lab Tests',
       title: 'Infection Panel',
       desc: 'Dengue NS1, typhoid widal, COVID-19 antigen and full infection screening.',
       price: '₹500+',
@@ -171,7 +171,7 @@ export function Services() {
       icon: '➕', category: 'Medical Shops',
       title: 'List Your Medical Shop',
       desc: 'Own a medical store? Register on SehatSehul and get discovered by thousands of patients in J&K.',
-      price: '₹499/yr',
+      price: '₹99/Month',
       link: '/shops/register',
       btnText: 'Register Shop',
       image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=300&fit=crop&crop=center'
@@ -327,7 +327,7 @@ export function About() {
               <h3>Our Mission</h3>
               <p>
                 To make quality healthcare accessible, affordable, and convenient
-                for every household in Jammu & Kashmir — from major cities to
+                for every household in Jammu & Kashmir  from major cities to
                 smaller towns and villages.
               </p>
             </div>
@@ -361,7 +361,7 @@ export function About() {
             <p>
               We understand that healthcare should be timely, reliable, and comfortable.
               With sehat sehul, users can easily book home nursing services, order medicines
-              from verified pharmacies, and stay informed about their well-being — all
+              from verified pharmacies, and stay informed about their well-being  all
               within a secure and user-friendly environment.
             </p>
             <p>
@@ -493,7 +493,7 @@ export function Contact() {
             <div className="cc-label">Call Us</div>
             <div className="cc-val">70062 73733</div>
             <div className="cc-val">70066 59980</div>
-            <div className="cc-hint">Mon–Sat, 9AM–8PM</div>
+            <div className="cc-hint">Mon–Sun, 8AM–9PM</div>
           </a>
           <a href="mailto:sehatsehul@gmail.com" className="contact-card">
             <div className="cc-icon email">📧</div>
@@ -534,7 +534,7 @@ export function Contact() {
                 <span className="co-row-icon">📍</span>
                 <div>
                   <div className="co-row-label">Address</div>
-                  <div className="co-row-val">Srinagar<br/>Jammu & Kashmir — 191111</div>
+                  <div className="co-row-val">Srinagar<br/>Jammu & Kashmir  191111</div>
                 </div>
               </div>
               <div className="co-row">
@@ -580,7 +580,7 @@ export function Contact() {
                   </div>
                   <span className="sl-arrow">↗</span>
                 </a>
-                <a href="https://www.instagram.com/sehatsehul" target="_blank" rel="noreferrer" className="social-link-card instagram">
+                <a href="https://www.instagram.com/sehatsehul?igsh=MTF2anhvcjJzc3Zlcw%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="social-link-card instagram">
                   <span>📸</span>
                   <div>
                     <strong>Instagram</strong>
@@ -588,7 +588,7 @@ export function Contact() {
                   </div>
                   <span className="sl-arrow">↗</span>
                 </a>
-                <a href="https://wa.me/917780906971" target="_blank" rel="noreferrer" className="social-link-card whatsapp">
+                <a href="https://wa.me/917780906871" target="_blank" rel="noreferrer" className="social-link-card whatsapp">
                   <span>💬</span>
                   <div>
                     <strong>WhatsApp</strong>
@@ -792,7 +792,7 @@ export function TermsAndConditions() {
               <div className="legal-num">05</div>
               <div>
                 <h2>Medical Shop Registration</h2>
-                <p>Medical shops registering on SehatSehul must hold a valid Drug License issued by the relevant authority. A registration fee of ₹499/year applies. Approval is subject to admin verification. Fees are non-refundable once the listing is approved.</p>
+                <p>Medical shops registering on SehatSehul must hold a valid Drug License issued by the relevant authority. A registration fee of ₹99/Month applies. Approval is subject to admin verification. Fees are non-refundable once the listing is approved.</p>
               </div>
             </div>
 

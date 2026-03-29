@@ -1,4 +1,4 @@
-/* .header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 12px rgba(0,0,0,.06)}
+.header{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 12px rgba(0,0,0,.06)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:22px;color:var(--slate);text-decoration:none;font-weight:700}
 .logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--teal),#14b8a6);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
@@ -34,9 +34,10 @@
 .mobile-nav a,.mobile-nav button{padding:12px 14px;font-size:15px;font-weight:500;color:var(--slate);text-decoration:none;border:none;background:none;text-align:left;cursor:pointer;border-radius:10px;transition:background .15s}
 .mobile-nav a:hover,.mobile-nav button:hover{background:var(--bg)}
 .mob-signup{background:var(--teal)!important;color:white!important;text-align:center!important;border-radius:50px!important;margin-top:4px}
-@media(max-width:900px){.nav-links{display:none}.auth-btns{display:none}.hamburger{display:flex}.mobile-nav{display:flex}} */
+@media(max-width:900px){.nav-links{display:none}.auth-btns{display:none}.hamburger{display:flex}.mobile-nav{display:flex}}
 
 /* ── COMING SOON OVERLAY ── */
+/* 
 .site-overlay {
   position: fixed;
   inset: 0;
@@ -197,4 +198,4 @@
   .overlay-actions { flex-direction: column; }
   .overlay-btn-primary,
   .overlay-btn-secondary { text-align: center; }
-}
+} */

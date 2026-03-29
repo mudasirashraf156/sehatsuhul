@@ -103,3 +103,32 @@
 .sc-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 @media (max-width: 900px) { .shops-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .shops-grid { grid-template-columns: 1fr; } }
+/* View details link */
+.sc-image-link { display: block; text-decoration: none; }
+.sc-image-link .sc-image { transition: opacity .2s; }
+.sc-image-link:hover .sc-image { opacity: .92; }
+
+.sc-name-link { text-decoration: none; color: inherit; }
+.sc-name-link h3 { transition: color .2s; }
+.sc-name-link:hover h3 { color: var(--teal); }
+
+.sc-view-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 11px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--slate);
+  text-decoration: none;
+  transition: all .2s;
+  background: var(--bg);
+}
+.sc-view-details:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: var(--teal-xl);
+}

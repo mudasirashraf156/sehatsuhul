@@ -127,10 +127,10 @@ export default function RegisterShop() {
           <div className="rshop-form-wrap">
             <div className="rshop-fee-banner">
               <div>
-                <strong>Registration Fee: ₹499 / year</strong>
+                <strong>Registration Fee: ₹99/month</strong>
                 <span>One-time listing fee. Admin approval within 24 hours.</span>
               </div>
-              <div className="fee-badge">₹499</div>
+              <div className="fee-badge">₹99</div>
             </div>
 
             {error && <div className="alert alert-error">{error}</div>}
@@ -209,43 +209,111 @@ export default function RegisterShop() {
           </div>
         )}
 
-        {/* STEP 2 — Payment */}
-        {step === 2 && (
-          <div className="rshop-payment">
-            <div className="card payment-card">
-              <div className="payment-icon">💳</div>
-              <h2>Complete Your Payment</h2>
-              <p>Pay the one-time registration fee to submit your shop for admin review</p>
+       
+      {/* STEP 2 — Payment */}
+{step === 2 && (
+  <div className="rshop-payment">
+    <div className="card payment-card">
+      <div className="payment-icon">💳</div>
+      <h2>Complete Your Payment</h2>
+      <p>Pay the one-time registration fee to submit your shop for admin review</p>
 
-              <div className="payment-amount">
-                <span>Registration Fee</span>
-                <strong>₹499</strong>
+      <div className="payment-amount">
+        <span>Registration Fee</span>
+        <strong>₹99</strong>
+      </div>
+
+      <div className="payment-methods">
+        <h4>Pay via UPI / Bank Transfer</h4>
+        
+        {/* Option 1: UPI QR Code */}
+        <div className="qr-section">
+          <div className="qr-label">📱 Scan QR Code to Pay</div>
+          <div className="qr-code-container">
+            <img 
+              src="scanupi.jpeg"
+              alt="UPI QR Code"
+              className="upi-qr-code"
+              style={{ width: '200px', height: '200px', margin: '10px auto' }}
+            />
+          </div>
+          <p className="qr-note">
+            <small>Scan with PhonePe, Google Pay, Paytm, or any UPI app</small>
+          </p>
+        </div>
+
+        {/* Option 2: Manual UPI Details */}
+        <div className="upi-details-section">
+          <div className="section-divider">
+            <span>OR Pay Manually</span>
+          </div>
+          <div className="upi-box">
+            <div className="upi-row">
+              <span>UPI ID</span>
+              <div className="copy-row">
+                <strong>aatirahshowkat@okicici</strong>
+                <button 
+                  className="copy-btn"
+                  onClick={() => {
+                    navigator.clipboard.writeText('aatirahshowkat@okicici');
+                    alert('UPI ID copied!');
+                  }}
+                >
+                  📋 Copy
+                </button>
               </div>
-
-              <div className="payment-methods">
-                <h4>Pay via UPI / Bank Transfer</h4>
-                <div className="upi-box">
-                  <div className="upi-row"><span>UPI ID</span><strong>sehatsehul@upi</strong></div>
-                  <div className="upi-row"><span>Account Name</span><strong>SehatSehul Healthcare</strong></div>
-                  <div className="upi-row"><span>Amount</span><strong>₹499</strong></div>
-                  <div className="upi-row"><span>Reference</span><strong>SHOP-{shopId?.slice(-6).toUpperCase()}</strong></div>
-                </div>
-                <div className="alert alert-info" style={{marginTop:16}}>
-                  ℹ️ After paying, click the button below. Our admin will verify your payment and approve your shop within 24 hours.
-                </div>
+            </div>
+            <div className="upi-row">
+              <span>Account Name</span>
+              <strong>SehatSehul Healthcare</strong>
+            </div>
+            <div className="upi-row">
+              <span>Amount</span>
+              <strong>₹99</strong>
+            </div>
+            <div className="upi-row">
+              <span>Reference</span>
+              <div className="copy-row">
+                <strong>SHOP-{shopId?.slice(-6).toUpperCase()}</strong>
+                <button 
+                  className="copy-btn"
+                  onClick={() => {
+                    navigator.clipboard.writeText(`SHOP-${shopId?.slice(-6).toUpperCase()}`);
+                    alert('Reference copied!');
+                  }}
+                >
+                  📋 Copy
+                </button>
               </div>
-
-              {error && <div className="alert alert-error">{error}</div>}
-
-              <button className="btn btn-teal" style={{width:'100%',justifyContent:'center',padding:'14px',marginTop:8}} onClick={confirmPayment} disabled={loading}>
-                {loading ? <span className="spinner"/> : '✅ I Have Paid — Submit for Approval'}
-              </button>
-              <button className="btn-ghost" style={{width:'100%',textAlign:'center',marginTop:8}} onClick={() => setStep(1)}>
-                ← Back to Details
-              </button>
             </div>
           </div>
-        )}
+        </div>
+
+        <div className="alert alert-info" style={{ marginTop: 16 }}>
+          ℹ️ After paying, click the button below. Our admin will verify your payment and approve your shop within 24 hours.
+        </div>
+      </div>
+
+      {error && <div className="alert alert-error">{error}</div>}
+
+      <button 
+        className="btn btn-teal" 
+        style={{ width: '100%', justifyContent: 'center', padding: '14px', marginTop: 8 }} 
+        onClick={confirmPayment} 
+        disabled={loading}
+      >
+        {loading ? <span className="spinner" /> : '✅ I Have Paid — Submit for Approval'}
+      </button>
+      <button 
+        className="btn-ghost" 
+        style={{ width: '100%', textAlign: 'center', marginTop: 8 }} 
+        onClick={() => setStep(1)}
+      >
+        ← Back to Details
+      </button>
+    </div>
+  </div>
+)}
 
         {/* STEP 3 — Done */}
         {step === 3 && (
