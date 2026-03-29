@@ -425,7 +425,7 @@ export function About() {
               True healing begins not only with medicine, but with care,
               comfort, and the feeling of being safe at home.
             </blockquote>
-            <div className="quote-author">— sehat sehul · SehatSehul</div>
+            <div className="quote-author">· SehatSehul</div>
           </div>
         </div>
       </div>
@@ -438,9 +438,9 @@ export function About() {
           <div className="values-grid">
             {[
               { icon:'🔒', title:'Trust',        desc:'Every nurse, shop and lab on our platform is verified by our team before going live.' },
-              { icon:'❤️', title:'Compassion',   desc:'We design every feature with empathy — because healthcare is deeply personal.' },
+              { icon:'❤️', title:'Compassion',   desc:'We design every feature with empathy because healthcare is deeply personal.' },
               { icon:'⚡', title:'Speed',        desc:'From booking to arrival, we aim for the fastest possible response times in J&K.' },
-              { icon:'🌍', title:'Accessibility',desc:'Quality healthcare for everyone — whether in Srinagar or a remote district.' },
+              { icon:'🌍', title:'Accessibility',desc:'Quality healthcare for everyone whether in Srinagar or a remote district.' },
               { icon:'🔍', title:'Transparency', desc:'No hidden fees, clear pricing, honest reviews. What you see is what you get.' },
               { icon:'📈', title:'Innovation',   desc:'We continuously improve our platform to serve patients and healthcare workers better.' },
             ].map((v, i) => (
