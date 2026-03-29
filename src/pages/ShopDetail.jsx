@@ -1,20 +1,64 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import './ShopDetail.css';
 
+function getCart() {
+  try { return JSON.parse(localStorage.getItem('ss_cart')) || { shopId:null, shopName:'', items:[] }; }
+  catch { return { shopId:null, shopName:'', items:[] }; }
+}
+function saveCart(cart) { localStorage.setItem('ss_cart', JSON.stringify(cart)); }
+
 export default function ShopDetail() {
   const { id } = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [shop, setShop]     = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Medicines
+  const [medicines, setMedicines] = useState([]);
+  const [medLoading, setMedLoading] = useState(true);
+  const [sortBy, setSortBy] = useState('');
+  const [cart, setCart] = useState(getCart);
+  const [addedId, setAddedId] = useState(null);
 
   useEffect(() => {
     axios.get(`/api/shops/${id}`)
       .then(r => { setShop(r.data); setLoading(false); })
       .catch(() => setLoading(false));
   }, [id]);
+
+  useEffect(() => {
+    setMedLoading(true);
+    const params = sortBy ? `?sort=${sortBy}` : '';
+    axios.get(`/api/medicines/shop/${id}${params}`)
+      .then(r => { setMedicines(r.data); setMedLoading(false); })
+      .catch(() => { setMedicines([]); setMedLoading(false); });
+  }, [id, sortBy]);
+
+  const addToCart = (med) => {
+    let c = { ...cart };
+    // If cart has items from a different shop, warn
+    if (c.shopId && c.shopId !== id) {
+      if (!window.confirm('Your cart has items from another shop. Clear cart and add from this shop?')) return;
+      c = { shopId: id, shopName: shop?.shopName || '', items: [] };
+    }
+    if (!c.shopId) { c.shopId = id; c.shopName = shop?.shopName || ''; }
+    const existing = c.items.find(i => i.medicineId === med._id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      c.items.push({ medicineId: med._id, name: med.name, price: med.price, quantity: 1, image: med.image });
+    }
+    setCart(c);
+    saveCart(c);
+    setAddedId(med._id);
+    setTimeout(() => setAddedId(null), 1200);
+  };
+
+  const cartCount = cart.items.reduce((s, i) => s + i.quantity, 0);
 
   if (loading) return <div className="page-loader">Loading shop details…</div>;
   if (!shop)   return (
@@ -34,6 +78,13 @@ export default function ShopDetail() {
 
   return (
     <div className="sd-page">
+
+      {/* Floating cart button */}
+      {cartCount > 0 && (
+        <button className="sd-floating-cart" onClick={() => navigate('/cart')}>
+          🛒 <span>{cartCount}</span> · View Cart
+        </button>
+      )}
 
       {/* Hero */}
       <div className="sd-hero">
@@ -115,6 +166,65 @@ export default function ShopDetail() {
                 </div>
               </div>
             )}
+
+            {/* ── MEDICINES SECTION ── */}
+            <div className="card sd-section">
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10,marginBottom:16,paddingBottom:12,borderBottom:'1px solid var(--border)'}}>
+                <h2 style={{margin:0,border:0,padding:0}}>💊 Available Medicines</h2>
+                <div className="sd-sort-controls">
+                  <label style={{fontSize:12,fontWeight:600,color:'var(--muted)'}}>Sort: </label>
+                  <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="sd-sort-select">
+                    <option value="">Latest</option>
+                    <option value="price_asc">Price: Low → High</option>
+                    <option value="price_desc">Price: High → Low</option>
+                    <option value="name_asc">Name: A → Z</option>
+                    <option value="name_desc">Name: Z → A</option>
+                  </select>
+                </div>
+              </div>
+
+              {medLoading ? (
+                <div style={{textAlign:'center',padding:32,color:'var(--muted)'}}>Loading medicines…</div>
+              ) : medicines.length === 0 ? (
+                <div style={{textAlign:'center',padding:32,color:'var(--muted)'}}>
+                  <div style={{fontSize:40,marginBottom:8}}>📭</div>
+                  <p>No medicines listed by this shop yet.</p>
+                </div>
+              ) : (
+                <div className="sd-med-grid">
+                  {medicines.map(med => (
+                    <div key={med._id} className="sd-med-card">
+                      <div className="sd-med-img">
+                        {med.image ? (
+                          <img src={`${axios.defaults.baseURL}/uploads/${med.image}`} alt={med.name} />
+                        ) : (
+                          <span>💊</span>
+                        )}
+                      </div>
+                      <div className="sd-med-info">
+                        <h4>{med.name}</h4>
+                        {med.brand && <div className="sd-med-brand">{med.brand}</div>}
+                        <div className="sd-med-meta">
+                          <span className="badge badge-teal" style={{fontSize:10}}>{med.category}</span>
+                          {!med.inStock && <span className="badge badge-rose" style={{fontSize:10}}>Out of Stock</span>}
+                        </div>
+                        {med.description && <p className="sd-med-desc">{med.description}</p>}
+                        <div className="sd-med-bottom">
+                          <span className="sd-med-price">₹{med.price}</span>
+                          <button
+                            className={`sd-add-cart-btn ${addedId === med._id ? 'added' : ''}`}
+                            disabled={!med.inStock}
+                            onClick={() => addToCart(med)}
+                          >
+                            {addedId === med._id ? '✅ Added!' : '🛒 Add to Cart'}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Map embed */}
             <div className="card sd-section">

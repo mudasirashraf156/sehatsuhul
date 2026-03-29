@@ -3,12 +3,20 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Header.css';
 
+function getCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem('ss_cart'));
+    return cart?.items?.reduce((s, i) => s + i.quantity, 0) || 0;
+  } catch { return 0; }
+}
+
 export default function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(getCartCount);
   const ref = useRef();
 
   useEffect(() => {
@@ -18,6 +26,16 @@ export default function Header() {
   }, []);
 
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
+
+  // Update cart count when navigating or storage changes
+  useEffect(() => {
+    setCartCount(getCartCount());
+    const onStorage = () => setCartCount(getCartCount());
+    window.addEventListener('storage', onStorage);
+    // also poll for same-tab changes
+    const interval = setInterval(() => setCartCount(getCartCount()), 1000);
+    return () => { window.removeEventListener('storage', onStorage); clearInterval(interval); };
+  }, [location.pathname]);
 
   const doLogout = () => { logout(); navigate('/'); setOpen(false); };
 const dashPath =
@@ -42,6 +60,9 @@ const dashPath =
           <Link to="/about" className={isActive('/about') ? 'active' : ''}>About</Link>
           <Link to="/shops" className={isActive('/shops') ? 'active' : ''}>💊 Medical Shops</Link>
           <Link to="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link>
+          <Link to="/cart" className={`cart-nav-link ${isActive('/cart') ? 'active' : ''}`}>
+            🛒{cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </Link>
           <Link to="/scan" className={isActive('/scan') ? 'active' : ''}>
   🆓 Free Help
 </Link>
@@ -92,6 +113,7 @@ const dashPath =
           <Link to="/services">🧪 Services</Link>
           <Link to="/about">ℹ️ About</Link>
           <Link to="/contact">📞 Contact</Link>
+          <Link to="/cart">🛒 Cart{cartCount > 0 ? ` (${cartCount})` : ''}</Link>
           <Link to="/scan"> Scan prescription</Link>
           {user ? (
             <>
