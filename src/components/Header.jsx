@@ -87,6 +87,10 @@ const dashPath =
                   <Link to="/profile" className="dd-item" onClick={() => setOpen(false)}>👤 My Profile</Link>
                   {user.role === 'patient' && <Link to="/patient/bookings" className="dd-item" onClick={() => setOpen(false)}>📅 My Bookings</Link>}
                   {user.role === 'nurse'   && <Link to="/nurse/bookings"   className="dd-item" onClick={() => setOpen(false)}>📋 My Bookings</Link>}
+                  <Link to="/shops" className="dd-item" onClick={() => setOpen(false)}>💊 Medical Shops</Link>
+                  <Link to="/cart" className="dd-item" onClick={() => setOpen(false)}>
+                    🛒 My Cart{cartCount > 0 && <span style={{marginLeft:6,background:'#e11d48',color:'white',fontSize:10,fontWeight:800,padding:'1px 7px',borderRadius:20}}>{cartCount}</span>}
+                  </Link>
                   <div className="dd-divider"/>
                   <button className="dd-item dd-logout" onClick={doLogout}>🚪 Logout</button>
                 </div>
