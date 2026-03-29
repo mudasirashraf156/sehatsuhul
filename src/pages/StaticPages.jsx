@@ -492,7 +492,7 @@ export function Contact() {
             <div className="cc-icon phone">📞</div>
             <div className="cc-label">Call Us</div>
             <div className="cc-val">70062 73733</div>
-            <div className="cc-val">70066 59980</div>
+            {/* <div className="cc-val">70066 59980</div> */}
             <div className="cc-hint">Mon–Sun, 8AM–9PM</div>
           </a>
           <a href="mailto:sehatsehul@gmail.com" className="contact-card">
@@ -510,7 +510,7 @@ export function Contact() {
           <div className="contact-card no-link">
             <div className="cc-icon hours">🕐</div>
             <div className="cc-label">Working Hours</div>
-            <div className="cc-val">Mon – Sat</div>
+            <div className="cc-val">Mon – Sun</div>
             <div className="cc-val">9:00 AM – 8:00 PM</div>
             <div className="cc-hint">Emergency: 24/7</div>
           </div>
@@ -750,7 +750,7 @@ export function TermsAndConditions() {
           <div className="legal-content">
 
             <div className="legal-intro">
-              Welcome to <strong>SehatSehul</strong> — your trusted home healthcare platform in Jammu & Kashmir. By using this application, you agree to the following terms and conditions.
+              Welcome to <strong>SehatSehul</strong>  your trusted home healthcare platform in Jammu & Kashmir. By using this application, you agree to the following terms and conditions.
             </div>
 
             <div className="legal-section">
@@ -781,7 +781,7 @@ export function TermsAndConditions() {
               <div className="legal-num">04</div>
               <div>
                 <h2>Disputes Between Users & Providers</h2>
-                <p>In case of any misunderstanding, issue, or dispute between a patient and a nurse, laboratory, or pharmacy — it will be handled directly between the parties involved.</p>
+                <p>In case of any misunderstanding, issue, or dispute between a patient and a nurse, laboratory, or pharmacy  it will be handled directly between the parties involved.</p>
                 <div className="legal-note">
                   ⚠️ SehatSehul will not be liable or involved in disputes arising from services rendered between users and healthcare providers.
                 </div>
