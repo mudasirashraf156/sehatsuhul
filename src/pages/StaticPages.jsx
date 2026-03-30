@@ -587,7 +587,7 @@ export function Contact() {
                   </div>
                   <span className="sl-arrow">↗</span>
                 </a>
-                <a href="https://wa.me/917780906871" target="_blank" rel="noreferrer" className="social-link-card whatsapp">
+                <a href="https://wa.me/7006188346" target="_blank" rel="noreferrer" className="social-link-card whatsapp">
                   <span>💬</span>
                   <div>
                     <strong>WhatsApp</strong>
