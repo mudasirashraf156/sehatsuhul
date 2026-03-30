@@ -488,11 +488,10 @@ export function Contact() {
 
         {/* Top Cards */}
         <div className="contact-cards">
-          <a href="tel:+917006273733" className="contact-card">
+          <a href="tel:+917006188346" className="contact-card">
             <div className="cc-icon phone">📞</div>
             <div className="cc-label">Call Us</div>
-            <div className="cc-val">70062 73733</div>
-            {/* <div className="cc-val">70066 59980</div> */}
+            <div className="cc-val">70061 88346</div>
             <div className="cc-hint">Mon–Sun, 8AM–9PM</div>
           </a>
           <a href="mailto:sehatsehul@gmail.com" className="contact-card">
@@ -501,10 +500,10 @@ export function Contact() {
             <div className="cc-val">sehatsehul@gmail.com</div>
             <div className="cc-hint">Reply within 24 hours</div>
           </a>
-          <a href="https://wa.me/917780906971" target="_blank" rel="noreferrer" className="contact-card">
+          <a href="https://wa.me/919186238841" target="_blank" rel="noreferrer" className="contact-card">
             <div className="cc-icon whatsapp">💬</div>
             <div className="cc-label">WhatsApp</div>
-            <div className="cc-val">+91 77809 06971</div>
+            <div className="cc-val">+91 91862 38841</div>
             <div className="cc-hint">Fastest response</div>
           </a>
           <div className="contact-card no-link">
@@ -848,7 +847,7 @@ export function TermsAndConditions() {
 
             <div className="legal-contact">
               <h3>Questions about these terms?</h3>
-              <p>Contact us at <a href="mailto:sehatsehul@gmail.com">sehatsehul@gmail.com</a> or call <a href="tel:+917006273733">+91 70062 73733</a></p>
+              <p>Contact us at <a href="mailto:sehatsehul@gmail.com">sehatsehul@gmail.com</a> or call <a href="tel:+917006188346">+91 70061 88346</a></p>
             </div>
 
           </div>
@@ -1006,7 +1005,7 @@ export function PrivacyPolicy() {
 
             <div className="legal-contact">
               <h3>Privacy concerns?</h3>
-              <p>Contact us at <a href="mailto:sehatsehul@gmail.com">sehatsehul@gmail.com</a> or call <a href="tel:+917006273733">+91 70062 73733</a></p>
+              <p>Contact us at <a href="mailto:sehatsehul@gmail.com">sehatsehul@gmail.com</a> or call <a href="tel:+917006188346">+91 70061 88346</a></p>
             </div>
 
           </div>

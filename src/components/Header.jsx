@@ -188,12 +188,12 @@ const dashPath =
 //           <a href="mailto:sehatsehul@gmail.com" className="overlay-btn-primary">
 //             📧 Get Early Access
 //           </a>
-//           <a href="https://wa.me/917780906971" target="_blank" rel="noreferrer" className="overlay-btn-secondary">
+//           <a href="https://wa.me/919186238841" target="_blank" rel="noreferrer" className="overlay-btn-secondary">
 //             💬 WhatsApp Us
 //           </a>
 //         </div>
 //         <div className="overlay-contact">
-//           📞 +91 70062 73733 · 📍 Budgam, Srinagar, J&K
+//           📞 +91 70061 88346 · 📍 Budgam, Srinagar, J&K
 //         </div>
 //         <p className="overlay-admin-hint">
 //           Admin or tester?{' '}

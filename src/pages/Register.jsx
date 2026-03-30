@@ -107,7 +107,7 @@ const submit = async (e) => {
               <div className="field"><label>First Name</label><input name="firstName" placeholder="Ahmed" value={form.firstName} onChange={h} required/></div>
               <div className="field"><label>Last Name</label><input name="lastName" placeholder="Khan" value={form.lastName} onChange={h} required/></div>
             </div>
-            <div className="field"><label>Phone Number</label><input name="phone" type="tel" placeholder="+91 70062 73733" value={form.phone} onChange={h} required/></div>
+            <div className="field"><label>Phone Number</label><input name="phone" type="tel" placeholder="+91 70061 88346" value={form.phone} onChange={h} required/></div>
             <div className="field"><label>Email Address</label><input name="email" type="email" placeholder="you@email.com" value={form.email} onChange={h} required/></div>
             <div className="field">
               <label>City</label>

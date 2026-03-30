@@ -143,7 +143,7 @@ export default function RegisterShop() {
                   <div className="field"><label>Owner Name *</label><input name="ownerName" placeholder="Mohammad Arif" value={form.ownerName} onChange={h} required/></div>
                 </div>
                 <div className="form-row">
-                  <div className="field"><label>Phone *</label><input name="phone" placeholder="+91 70062 73733" value={form.phone} onChange={h} required/></div>
+                  <div className="field"><label>Phone *</label><input name="phone" placeholder="+91 70061 88346" value={form.phone} onChange={h} required/></div>
                   <div className="field"><label>WhatsApp</label><input name="whatsapp" placeholder="WhatsApp number" value={form.whatsapp} onChange={h}/></div>
                 </div>
                 <div className="field"><label>Email</label><input name="email" type="email" placeholder="shop@email.com" value={form.email} onChange={h}/></div>
