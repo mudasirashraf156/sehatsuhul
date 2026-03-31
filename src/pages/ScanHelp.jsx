@@ -6,7 +6,7 @@ export default function ScanHelp() {
   const [messages, setMessages] = useState([
     {
       from: 'bot',
-      text: "Hello! 👋 I'm your SehatSehul Health Assistant. You can ask me anything about your health, or upload a prescription and I'll help you understand it.",
+      text: "Salam Alykum! 🌙 Welcome to SehatSehul Health Assistant. I'm here to help you with any health questions, explain prescriptions, or guide you to the right care — completely free. How can I help you today?",
       time: now()
     }
   ]);
@@ -41,20 +41,7 @@ export default function ScanHelp() {
 
   const removeFile = () => { setFile(null); setFilePreview(null); };
 
-  const getBotReply = (userMsg, hasFile) => {
-    const msg = userMsg.toLowerCase();
-    if (hasFile) return "I've received your prescription! 📋 I can see it's been uploaded successfully. Our team will review it shortly. In the meantime, could you tell me what specific medication or instruction you'd like me to explain?";
-    if (msg.includes('fever') || msg.includes('temperature')) return "For fever, it's important to stay hydrated and rest. If temperature exceeds 103°F (39.4°C) or lasts more than 3 days, please consult a doctor. Would you like me to book a nurse visit for you? 🌡️";
-    if (msg.includes('blood pressure') || msg.includes('bp')) return "High blood pressure can be serious. Normal BP is around 120/80 mmHg. Please avoid salty foods, exercise regularly, and take prescribed medications consistently. Would you like to book a home BP monitoring visit? 💊";
-    if (msg.includes('sugar') || msg.includes('diabetes')) return "For diabetes management, monitor your blood sugar regularly, follow your diet plan, and take medications on time. Our nurses can visit you at home for blood glucose monitoring. Want to book a visit? 🩸";
-    if (msg.includes('pain') || msg.includes('hurt')) return "I'm sorry to hear you're in pain. Could you tell me where the pain is and how severe it is (1-10)? This will help me suggest the right care for you. 🏥";
-    if (msg.includes('nurse') || msg.includes('book')) return "I'd be happy to help you book a nurse! Please go to our Find Nurses page or I can guide you through the process. What type of care do you need? 👩‍⚕️";
-    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) return "Hello! 😊 How can I help you today? You can ask me health questions or upload your prescription for assistance.";
-    if (msg.includes('prescription') || msg.includes('medicine') || msg.includes('tablet')) return "Please upload a photo of your prescription using the 📎 button below and I'll help you understand the medications, dosage, and instructions. 💊";
-    if (msg.includes('covid') || msg.includes('corona')) return "For COVID-19 symptoms, please isolate and monitor your oxygen levels. If below 94%, seek immediate medical help. Our nurses can provide home care support. Stay safe! 😷";
-    if (msg.includes('thank')) return "You're welcome! 😊 Stay healthy and don't hesitate to reach out anytime. SehatSehul is here for you 24/7! 🩺";
-    return "Thank you for your message. For the best medical advice, I recommend consulting one of our certified nurses. Would you like to book a home visit? You can also upload your prescription for a detailed review. 🏥";
-  };
+  const OPENROUTER_KEY = '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';
 
   const send = async () => {
     const text = input.trim();
@@ -75,14 +62,50 @@ export default function ScanHelp() {
     removeFile();
     setTyping(true);
 
-    setTimeout(() => {
-      setTyping(false);
+    try {
+      const history = messages
+        .filter(m => m.text)
+        .map(m => ({ role: m.from === 'bot' ? 'assistant' : 'user', content: m.text }));
+
+      const userContent = hadFile
+        ? `The user uploaded a file: ${text || 'prescription image'}. Please help them understand it.`
+        : text;
+
+      const resp = await axios.post(
+        'https://openrouter.ai/api/v1/chat/completions',
+        {
+          model: 'nvidia/nemotron-3-super-120b-a12b:free',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are SehatSehul Health Assistant, a helpful and caring medical AI for patients in Jammu & Kashmir, India. Answer health questions clearly and helpfully in the language the user writes in. If asked about prescriptions or medicines, explain them simply. Always recommend consulting a doctor for serious issues. Be warm, concise, and supportive.'
+            },
+            ...history,
+            { role: 'user', content: userContent }
+          ]
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${OPENROUTER_KEY}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://sehatsehul.in',
+            'X-Title': 'SehatSehul Health Assistant'
+          }
+        }
+      );
+
+      const botText = resp.data.choices[0].message.content;
+      setMessages(prev => [...prev, { from: 'bot', text: botText, time: now() }]);
+    } catch (err) {
+      console.error('Chat error:', err.response?.data || err.message);
       setMessages(prev => [...prev, {
         from: 'bot',
-        text: getBotReply(text, hadFile),
+        text: 'Sorry, I could not process your request right now. Please try again. 🙏',
         time: now()
       }]);
-    }, 1200 + Math.random() * 800);
+    }
+
+    setTyping(false);
   };
 
   const handleKey = (e) => {

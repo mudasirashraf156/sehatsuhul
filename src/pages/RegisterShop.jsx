@@ -90,13 +90,13 @@ export default function RegisterShop() {
       <div className="container" style={{textAlign:'center',padding:'80px 24px'}}>
         <div style={{fontSize:48,marginBottom:16}}>🚫</div>
         <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:28,marginBottom:12}}>Access Denied</h2>
-        <p style={{color:'var(--muted)',marginBottom:8}}>Only registered shop owners can list a medical shop.</p>
+        <p style={{color:'var(--muted)',marginBottom:8}}>Only registered pharmacists can list a medical shop.</p>
         <p style={{color:'var(--muted)',fontSize:14,marginBottom:28}}>
           You are currently logged in as a <strong>{user.role}</strong>.
         </p>
         <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-          <a href="/register?role=shopOwner" className="btn btn-teal">Register as Shop Owner</a>
-          <a href="/login?role=shopOwner" className="btn btn-outline">Login as Shop Owner</a>
+          <a href="/register?role=shopOwner" className="btn btn-teal">Register as Pharmacist</a>
+          <a href="/login?role=shopOwner" className="btn btn-outline">Login as Pharmacist</a>
         </div>
       </div>
     </div>

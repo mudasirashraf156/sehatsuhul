@@ -49,22 +49,22 @@ export default function Login() {
       desc: 'Manage your bookings, availability, and patient care all in one place.',
     },
     shopOwner: {
-      icon: '🏪',
-      title: 'Welcome Back,\nShop Owner',
-      desc: 'Manage your medical shop listing, track customers and grow your business.',
+      icon: '🏥',
+      title: 'Welcome Back,\nPharmacist',
+      desc: 'Manage your pharmacy listing, medicines and orders all in one place.',
     },
   };
 
   const tabs = [
     { key: 'patient',   label: '🙋 Patient'    },
     { key: 'nurse',     label: '👩‍⚕️ Nurse'      },
-    { key: 'shopOwner', label: '🏪 Shop Owner'  },
+    { key: 'shopOwner', label: '🏥 Pharmacist'  },
   ];
 
   const btnLabel = {
     patient:   'Login as Patient',
     nurse:     'Login as Nurse',
-    shopOwner: 'Login as Shop Owner',
+    shopOwner: 'Login as Pharmacist',
   };
 
   const demoAccounts = {
@@ -91,7 +91,7 @@ export default function Login() {
           </div>
           {role === 'shopOwner' && (
             <div className="as-steps" style={{marginTop:20}}>
-              <div>🏪 List your medical shop</div>
+              <div>🏥 List your pharmacy</div>
               <div>📍 Reach customers in J&K</div>
               <div>✅ Admin verified listing</div>
             </div>

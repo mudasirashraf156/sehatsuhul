@@ -74,7 +74,9 @@ const dashPath =
               <button className="avatar-btn" onClick={() => setOpen(!open)}>
                 <div className="avatar-circle">{user.firstName[0]}{user.lastName[0]}</div>
                 <span className="avatar-name">{user.firstName}</span>
-                <span className={`role-pill ${user.role}`}>{user.role}</span>
+                <span className={`role-pill ${user.role}`}>
+                  {user.role === 'shopOwner' ? 'Pharmacist' : user.role}
+                </span>
                 <span className="chevron">{open ? '▲' : '▼'}</span>
               </button>
               {open && (

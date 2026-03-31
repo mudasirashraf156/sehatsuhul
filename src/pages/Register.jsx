@@ -97,7 +97,7 @@ const submit = async (e) => {
           <div className="role-tabs" style={{marginBottom:'20px'}}>
             <button className={role === 'patient'   ? 'active' : ''} onClick={() => { setRole('patient');   setError(''); }}>🙋 Patient</button>
             <button className={role === 'nurse'     ? 'active' : ''} onClick={() => { setRole('nurse');     setError(''); }}>👩‍⚕️ Nurse</button>
-            <button className={role === 'shopOwner' ? 'active' : ''} onClick={() => { setRole('shopOwner'); setError(''); }}>🏪 Shop Owner</button>
+            <button className={role === 'shopOwner' ? 'active' : ''} onClick={() => { setRole('shopOwner'); setError(''); }}>🏥 Pharmacist</button>
           </div>
 
           {error && <div className="alert alert-error">{error}</div>}
@@ -134,7 +134,7 @@ const submit = async (e) => {
             {/* Shop Owner-only info */}
             {role === 'shopOwner' && (
               <div className="alert alert-info">
-                🏪 After registering, you can list your medical shop from your dashboard. A one-time fee of ₹99/Month applies for listing.
+                🏥 After registering, you can list your pharmacy from your dashboard. A one-time fee of ₹99/Month applies for listing.
               </div>
             )}
 <div className="terms-check-wrap">
@@ -159,7 +159,7 @@ const submit = async (e) => {
   className={`auth-submit ${role === 'shopOwner' ? 'patient' : role}`}
   disabled={loading || !agreed}
 >
-  {loading ? <span className="spinner"/> : `Create ${role === 'patient' ? 'Patient' : role === 'nurse' ? 'Nurse' : 'Shop Owner'} Account`}
+  {loading ? <span className="spinner"/> : `Create ${role === 'patient' ? 'Patient' : role === 'nurse' ? 'Nurse' : 'Pharmacist'} Account`}
 </button>
           </form>
 

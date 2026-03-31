@@ -202,7 +202,7 @@ useEffect(() => {
                           u.role === 'shopOwner'  ? 'badge-orange' :
                           'badge-teal'
                         }`}>
-                          {u.role === 'shopOwner' ? '🏪 Shop Owner' :
+                          {u.role === 'shopOwner' ? '🏥 Pharmacist' :
                            u.role === 'nurse'     ? '👩‍⚕️ Nurse' : '🙋 Patient'}
                         </span>
                       </td>

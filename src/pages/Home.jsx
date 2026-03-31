@@ -45,6 +45,8 @@ export default function Home() {
             <div className="hero-actions">
               <Link to="/nurses" className="btn btn-teal"><span>🔍  </span>  Find a Nurse Now</Link>
               <Link to="/register?role=nurse" className="btn btn-outline"> <span>💼   </span>  Join as Nurse</Link>
+              <Link to="/book-test" className="btn btn-teal"><span>🧪  </span>  Book Lab Test</Link>
+              <Link to="/shops/register" className="btn btn-outline"> <span>➕   </span>  Add Your Shop</Link>
             </div>
             <div className="hero-trust">
               <div className="trust-avatars">
@@ -170,6 +172,8 @@ export default function Home() {
           <div className="cta-btns">
             <Link to="/nurses" className="btn btn-teal">Find Nurses Now</Link>
             <Link to="/register?role=nurse" className="btn btn-outline" style={{color:'white',borderColor:'rgba(255,255,255,.4)'}}>Join as Nurse</Link>
+            <Link to="/book-test" className="btn btn-teal">Book Lab Test</Link>
+            <Link to="/shops/register" className="btn btn-outline" style={{color:'white',borderColor:'rgba(255,255,255,.4)'}}>Add Your Shop</Link>
           </div>
         </div>
       </section>
