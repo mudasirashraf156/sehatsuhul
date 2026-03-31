@@ -41,7 +41,7 @@ export default function ScanHelp() {
 
   const removeFile = () => { setFile(null); setFilePreview(null); };
 
-  const OPENROUTER_KEY = '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';
+  const OPENROUTER_KEY = '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';
 
   const send = async () => {
     const text = input.trim();
