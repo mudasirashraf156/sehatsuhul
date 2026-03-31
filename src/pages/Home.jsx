@@ -25,10 +25,10 @@ const testimonials = [
 ];
 
 const stats = [
-  { val:'100+', label:'Verified Nurses', icon:'👩‍⚕️' },
-  { val:'200+', label:'Happy Patients', icon:'😊' },
+  { val:'24/7', label:'Always Available', icon:'🕐' },
+  { val:'Free', label:'Consultation Support', icon:'💬' },
   { val:'20+', label:'Districts Covered', icon:'🏙️' },
-  { val:'4.8★', label:'Average Rating', icon:'⭐' },
+  { val:'Fast', label:'Same-Day Booking', icon:'⚡' },
 ];
 
 export default function Home() {
