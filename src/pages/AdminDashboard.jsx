@@ -34,7 +34,7 @@ useEffect(() => {
 
   const verifyNurse = async (nurseId, val) => {
     await axios.patch(`/api/admin/nurses/${nurseId}/verify`, { verify: val });
-    setNurses(nurses.map(n => n._id === nurseId ? { ...n, isVerified: val } : n));
+    setNurses(nurses.map(n => n._id === nurseId ? { ...n, isVerified: val, verificationPending: false } : n));
   };
 
   const updateShopStatus = async (id, status) => {
@@ -145,7 +145,7 @@ useEffect(() => {
             <div className="admin-table">
               <table>
                 <thead>
-                  <tr><th>Name</th><th>Specialization</th><th>City</th><th>License</th><th>Status</th><th>Action</th></tr>
+                  <tr><th>Name</th><th>Specialization</th><th>City</th><th>License</th><th>Status</th><th>UTR / Payment</th><th>Action</th></tr>
                 </thead>
                 <tbody>
                   {nurses.map(n => (
@@ -160,7 +160,14 @@ useEffect(() => {
                       <td>
                         {n.isVerified
                           ? <span className="badge badge-green">✅ Verified</span>
-                          : <span className="badge badge-orange">⏳ Pending</span>}
+                          : n.verificationPending
+                            ? <span className="badge badge-orange">💳 Payment Submitted</span>
+                            : <span className="badge badge-orange">⏳ Pending</span>}
+                      </td>
+                      <td>
+                        {n.verificationUTR
+                          ? <code style={{fontSize:'12px',background:'var(--teal-xl)',padding:'3px 8px',borderRadius:'6px',color:'var(--teal-d)'}}>{n.verificationUTR}</code>
+                          : <span style={{color:'var(--muted)',fontSize:'12px'}}>—</span>}
                       </td>
                       <td>
                         {n.isVerified
@@ -171,7 +178,7 @@ useEffect(() => {
                   ))}
                   {nurses.length === 0 && (
                     <tr>
-                      <td colSpan={6} style={{textAlign:'center',padding:'32px',color:'var(--muted)'}}>
+                      <td colSpan={7} style={{textAlign:'center',padding:'32px',color:'var(--muted)'}}>
                         No nurses registered yet
                       </td>
                     </tr>

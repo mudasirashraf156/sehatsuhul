@@ -47,9 +47,15 @@ export default function NurseDashboard() {
       </div>
 
       <div className="container dash-body">
-        {!profile?.isVerified && (
+        {!profile?.isVerified && !profile?.verificationPending && (
+          <div className="alert alert-warning" style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+            <span>⏳ Your profile is <strong>not yet verified</strong>. Get verified to appear in search results and receive bookings.</span>
+            <Link to="/nurse/verify" className="btn btn-teal btn-sm">🏅 Apply for Verification — ₹99</Link>
+          </div>
+        )}
+        {profile?.verificationPending && !profile?.isVerified && (
           <div className="alert alert-warning" style={{ marginBottom: '24px' }}>
-            ⏳ Your profile is <strong>pending verification</strong>. You'll start receiving bookings once approved by our team.
+            🕐 Your verification payment is <strong>under review</strong>. Admin will approve within 24–48 hours.
           </div>
         )}
 

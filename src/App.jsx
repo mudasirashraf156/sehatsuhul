@@ -28,6 +28,7 @@ import PatientLabTests from './pages/PatientLabTests';
 import { TermsAndConditions, PrivacyPolicy } from './pages/StaticPages';
 import ShopDetail from './pages/ShopDetail';
 import Cart from './pages/Cart';
+import NurseVerification from './pages/NurseVerification';
 import './index.css';
 
 function AppRoutes() {
@@ -64,6 +65,7 @@ function AppRoutes() {
       <Route path="/review/:bookingId/:nurseId" element={<PrivateRoute role="patient"><Review /></PrivateRoute>} />
 
       {/* Nurse routes */}
+      <Route path="/nurse/verify" element={<PrivateRoute role="nurse"><NurseVerification /></PrivateRoute>} />
       <Route path="/nurse/dashboard" element={<PrivateRoute role="nurse"><NurseDashboard /></PrivateRoute>} />
       <Route path="/nurse/bookings"  element={<PrivateRoute role="nurse"><NurseBookings /></PrivateRoute>} />
       <Route path="/nurse/profile"   element={<PrivateRoute role="nurse"><NurseProfileEdit /></PrivateRoute>} />
