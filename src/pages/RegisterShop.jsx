@@ -231,7 +231,7 @@ export default function RegisterShop() {
           <div className="qr-label">📱 Scan QR Code to Pay</div>
           <div className="qr-code-container">
             <img 
-              src="scanupi.jpeg"
+              src="/scanupi.jpeg"
               alt="UPI QR Code"
               className="upi-qr-code"
               style={{ width: '200px', height: '200px', margin: '10px auto' }}
