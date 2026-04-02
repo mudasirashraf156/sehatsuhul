@@ -114,7 +114,7 @@ export default function Home() {
               <div className="qa-body">
                 <h3>Scan Prescription</h3>
                 <p>Upload or scan your doctor's prescription and get instant help identifying medicines, dosage and alternatives.</p>
-                <Link to="/scan-help" className="qa-btn qa-btn--rose">Scan Now →</Link>
+                <Link to="/scan" className="qa-btn qa-btn--rose">Scan Now →</Link>
               </div>
             </div>
           </div>

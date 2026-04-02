@@ -16,6 +16,7 @@ export default function ShopDashboard() {
   const [medicines, setMedicines] = useState([]);
   const [medLoading, setMedLoading] = useState(false);
   const [medForm, setMedForm] = useState({ name:'', brand:'', price:'', category:'General', description:'', inStock:true });
+  const [medImage, setMedImage] = useState(null);
   const [editingMed, setEditingMed] = useState(null);
   const [medSaving, setMedSaving] = useState(false);
   const medFormRef = useRef();
@@ -47,6 +48,7 @@ export default function ShopDashboard() {
 
   const resetMedForm = () => {
     setMedForm({ name:'', brand:'', price:'', category:'General', description:'', inStock:true });
+    setMedImage(null);
     setEditingMed(null);
   };
 
@@ -54,20 +56,20 @@ export default function ShopDashboard() {
     e.preventDefault();
     setMedSaving(true);
     try {
-      const payload = {
-        name: medForm.name,
-        brand: medForm.brand,
-        price: medForm.price,
-        category: medForm.category,
-        description: medForm.description,
-        inStock: medForm.inStock
-      };
+      const fd = new FormData();
+      fd.append('name', medForm.name);
+      fd.append('brand', medForm.brand);
+      fd.append('price', medForm.price);
+      fd.append('category', medForm.category);
+      fd.append('description', medForm.description);
+      fd.append('inStock', medForm.inStock);
+      if (medImage) fd.append('image', medImage);
 
       if (editingMed) {
-        const r = await axios.put(`/api/medicines/${editingMed._id}`, payload);
+        const r = await axios.put(`/api/medicines/${editingMed._id}`, fd);
         setMedicines(medicines.map(m => m._id === editingMed._id ? r.data : m));
       } else {
-        const r = await axios.post('/api/medicines', payload);
+        const r = await axios.post('/api/medicines', fd);
         setMedicines([r.data, ...medicines]);
       }
       resetMedForm();
@@ -265,6 +267,12 @@ export default function ShopDashboard() {
                       <label style={{fontSize:12,fontWeight:600,color:'var(--muted)',display:'block',marginBottom:4}}>Description</label>
                       <textarea className="form-input" rows={2} value={medForm.description} onChange={e => setMedForm({...medForm, description:e.target.value})} placeholder="Brief description (optional)" />
                     </div>
+                    <div style={{marginBottom:14}}>
+                      <label style={{fontSize:12,fontWeight:600,color:'var(--muted)',display:'block',marginBottom:4}}>Medicine Image</label>
+                      <input type="file" accept="image/*" className="form-input" style={{padding:'8px 12px'}} onChange={e => setMedImage(e.target.files[0])} />
+                      {medImage && <div style={{fontSize:11,color:'var(--teal)',marginTop:4}}>✅ {medImage.name}</div>}
+                      {editingMed?.image && !medImage && <div style={{marginTop:6}}><img src={editingMed.image} alt="current" style={{height:60,borderRadius:8,objectFit:'cover'}} /></div>}
+                    </div>
                     <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:14}}>
                       <input type="checkbox" checked={medForm.inStock} onChange={e => setMedForm({...medForm, inStock:e.target.checked})} id="instock" />
                       <label htmlFor="instock" style={{fontSize:13,fontWeight:500,color:'var(--slate)',cursor:'pointer'}}>In Stock</label>
@@ -293,8 +301,10 @@ export default function ShopDashboard() {
                   <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:16}}>
                     {medicines.map(med => (
                       <div key={med._id} className="card" style={{padding:0,overflow:'hidden'}}>
-                        <div style={{height:60,background:'var(--teal-xl)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                          <span style={{fontSize:32}}>💊</span>
+                        <div style={{height:120,background:'var(--teal-xl)',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden',borderRadius:'0'}}>
+                          {med.image
+                            ? <img src={med.image} alt={med.name} style={{width:'100%',height:'100%',objectFit:'cover'}} />
+                            : <span style={{fontSize:32}}>💊</span>}
                         </div>
                         <div style={{padding:16}}>
                           <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:6}}>
