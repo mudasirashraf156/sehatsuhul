@@ -94,7 +94,7 @@ export default function ShopDetail() {
             <div className="sd-image-wrap">
               {shop.image ? (
                 <img
-                  src={`${axios.defaults.baseURL}/uploads/${shop.image}`}
+                  src={shop.image}
                   alt={shop.shopName}
                   className="sd-image"
                 />
@@ -196,7 +196,7 @@ export default function ShopDetail() {
                     <div key={med._id} className="sd-med-card">
                       <div className="sd-med-img">
                         {med.image ? (
-                          <img src={`${axios.defaults.baseURL}/uploads/${med.image}`} alt={med.name} />
+                          <img src={med.image} alt={med.name} />
                         ) : (
                           <span>💊</span>
                         )}

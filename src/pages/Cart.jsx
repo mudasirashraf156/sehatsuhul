@@ -131,7 +131,7 @@ export default function Cart() {
                 <div key={idx} className="cart-item">
                   <div className="cart-item-img">
                     {item.image ? (
-                      <img src={`${axios.defaults.baseURL}/uploads/${item.image}`} alt={item.name} />
+                      <img src={item.image} alt={item.name} />
                     ) : (
                       <span>💊</span>
                     )}

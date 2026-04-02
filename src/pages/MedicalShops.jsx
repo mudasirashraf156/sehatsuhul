@@ -89,7 +89,7 @@ function ShopCard({ shop }) {
         <div className="sc-image">
           {shop.image ? (
             <img
-              src={`${axios.defaults.baseURL}/uploads/${shop.image}`}
+              src={shop.image}
               alt={shop.shopName}
             />
           ) : (

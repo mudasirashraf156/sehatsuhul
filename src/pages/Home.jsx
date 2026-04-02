@@ -92,6 +92,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Quick Access */}
+      <section className="quick-access-section">
+        <div className="container">
+          <div className="section-head">
+            <span className="section-tag">Quick Access</span>
+            <h2>Everything You Need, In One Place</h2>
+            <p>From medicines to prescription scanning — manage your health needs instantly</p>
+          </div>
+          <div className="qa-grid">
+            <div className="qa-card qa-card--teal">
+              <div className="qa-icon">🏪</div>
+              <div className="qa-body">
+                <h3>Medical Shops</h3>
+                <p>Browse verified pharmacies near you, check medicine availability and place orders directly from local shops.</p>
+                <Link to="/shops" className="qa-btn qa-btn--teal">View Medical Shops →</Link>
+              </div>
+            </div>
+            <div className="qa-card qa-card--rose">
+              <div className="qa-icon">📷</div>
+              <div className="qa-body">
+                <h3>Scan Prescription</h3>
+                <p>Upload or scan your doctor's prescription and get instant help identifying medicines, dosage and alternatives.</p>
+                <Link to="/scan-help" className="qa-btn qa-btn--rose">Scan Now →</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="section">
         <div className="container">
