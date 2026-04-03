@@ -35,6 +35,7 @@ export default function ShopDashboard() {
     try {
       await axios.patch(`/api/shops/${shop._id}/pay`, { paymentRef: payUtr || 'PENDING_MANUAL' });
       setShop({ ...shop, isPaid: true });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch {
       setPayError('Payment update failed. Please try again.');
     }

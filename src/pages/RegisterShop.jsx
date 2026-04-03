@@ -55,6 +55,7 @@ export default function RegisterShop() {
       });
       setShopId(data._id);
       setStep(2);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
@@ -66,6 +67,7 @@ export default function RegisterShop() {
     try {
       await axios.patch(`/api/shops/${shopId}/pay`, { paymentRef: 'PENDING_MANUAL' });
       setStep(3);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setError('Payment update failed');
     }
