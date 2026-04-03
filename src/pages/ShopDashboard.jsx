@@ -25,6 +25,22 @@ export default function ShopDashboard() {
   const [orders, setOrders] = useState([]);
   const [ordersLoading, setOrdersLoading] = useState(false);
 
+  const [payUtr, setPayUtr] = useState('');
+  const [payLoading, setPayLoading] = useState(false);
+  const [payError, setPayError] = useState('');
+
+  const submitPayment = async () => {
+    setPayError('');
+    setPayLoading(true);
+    try {
+      await axios.patch(`/api/shops/${shop._id}/pay`, { paymentRef: payUtr || 'PENDING_MANUAL' });
+      setShop({ ...shop, isPaid: true });
+    } catch {
+      setPayError('Payment update failed. Please try again.');
+    }
+    setPayLoading(false);
+  };
+
   useEffect(() => {
     axios.get('/api/shops/my/shop')
       .then(r => { setShop(r.data); setLoading(false); })
@@ -119,11 +135,74 @@ export default function ShopDashboard() {
           </div>
         ) : (
           <div>
+            {/* Payment pending — full payment section */}
+            {!shop.isPaid && (
+              <div className="card" style={{marginBottom:24,border:'2px solid #fbbf24',borderRadius:20,overflow:'hidden'}}>
+                <div style={{background:'#fffbeb',padding:'20px 24px',borderBottom:'1px solid #fde68a',display:'flex',alignItems:'center',gap:12}}>
+                  <span style={{fontSize:28}}>💳</span>
+                  <div>
+                    <h3 style={{margin:0,fontSize:17,fontWeight:800,color:'#92400e'}}>Payment Pending</h3>
+                    <p style={{margin:0,fontSize:13,color:'#b45309'}}>Complete your ₹99 registration fee to submit your shop for approval.</p>
+                  </div>
+                </div>
+                <div style={{padding:'24px'}}>
+                  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20,marginBottom:20}}>
+                    {/* QR Code */}
+                    <div style={{textAlign:'center'}}>
+                      <div style={{fontSize:13,fontWeight:700,color:'var(--muted)',marginBottom:8}}>📱 Scan QR to Pay</div>
+                      <img src="/scanupi.jpeg" alt="UPI QR" style={{width:160,height:160,borderRadius:12,border:'1px solid var(--border)',objectFit:'cover'}} />
+                      <div style={{fontSize:11,color:'var(--muted)',marginTop:6}}>PhonePe · GPay · Paytm · Any UPI</div>
+                    </div>
+                    {/* UPI Details */}
+                    <div>
+                      <div style={{fontSize:13,fontWeight:700,color:'var(--muted)',marginBottom:10}}>OR Pay Manually</div>
+                      {[
+                        ['UPI ID','aatirahshowkat@okicici'],
+                        ['Amount','₹99'],
+                        ['Reference',`SHOP-${shop._id?.slice(-6).toUpperCase()}`],
+                      ].map(([label, val]) => (
+                        <div key={label} style={{marginBottom:10}}>
+                          <div style={{fontSize:11,fontWeight:700,color:'var(--muted)',textTransform:'uppercase',letterSpacing:'.04em'}}>{label}</div>
+                          <div style={{display:'flex',alignItems:'center',gap:8,marginTop:3}}>
+                            <strong style={{fontSize:14,color:'var(--slate)'}}>{val}</strong>
+                            <button onClick={() => { navigator.clipboard.writeText(val); }} style={{fontSize:11,background:'var(--teal-xl)',border:'none',color:'var(--teal)',borderRadius:6,padding:'2px 8px',cursor:'pointer',fontWeight:600}}>Copy</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{borderTop:'1px solid var(--border)',paddingTop:16}}>
+                    <div style={{fontSize:13,fontWeight:700,color:'var(--slate)',marginBottom:8}}>Enter your UTR / Transaction ID after paying:</div>
+                    <div style={{display:'flex',gap:10}}>
+                      <input
+                        style={{flex:1,border:'1.5px solid var(--border)',borderRadius:10,padding:'10px 14px',fontSize:14,fontFamily:"'DM Sans',sans-serif",outline:'none'}}
+                        placeholder="e.g. 426123456789"
+                        value={payUtr}
+                        onChange={e => setPayUtr(e.target.value)}
+                      />
+                      <button
+                        className="btn btn-teal"
+                        style={{whiteSpace:'nowrap'}}
+                        onClick={submitPayment}
+                        disabled={payLoading}
+                      >
+                        {payLoading ? 'Submitting…' : '✅ I Have Paid'}
+                      </button>
+                    </div>
+                    {payError && <div className="alert alert-error" style={{marginTop:10}}>{payError}</div>}
+                    <p style={{fontSize:12,color:'var(--muted)',marginTop:8,lineHeight:1.6}}>
+                      ℹ️ After submitting, our admin will verify and approve your shop within 24 hours.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Status banner */}
-            {shop.status === 'pending' && (
+            {shop.status === 'pending' && shop.isPaid && (
               <div className="alert alert-warning" style={{marginBottom:24}}>
                 ⏳ Your shop is <strong>pending admin approval</strong>. We'll notify you within 24 hours.
-                {!shop.isPaid && <span> · <strong>Payment not confirmed yet.</strong></span>}
               </div>
             )}
             {shop.status === 'approved' && (
