@@ -157,6 +157,9 @@ export default function Login() {
                   onChange={e => setForm({ ...form, password: e.target.value })}
                   required
                 />
+                <div style={{ textAlign: 'right', marginTop: 6 }}>
+                  <Link to="/forgot-password" style={{ fontSize: 12, color: 'var(--teal)', fontWeight: 600, textDecoration: 'none' }}>Forgot password?</Link>
+                </div>
               </div>
               <button
                 type="submit"

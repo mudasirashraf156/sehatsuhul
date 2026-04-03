@@ -29,6 +29,8 @@ import { TermsAndConditions, PrivacyPolicy } from './pages/StaticPages';
 import ShopDetail from './pages/ShopDetail';
 import Cart from './pages/Cart';
 import NurseVerification from './pages/NurseVerification';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import './index.css';
 
 function AppRoutes() {
@@ -54,6 +56,8 @@ function AppRoutes() {
 <Route path="/shops/:id" element={<ShopDetail />} />
 <Route path="/cart" element={<Cart />} />
 <Route path="/verify-email" element={<VerifyEmail />} />
+<Route path="/forgot-password" element={<ForgotPassword />} />
+<Route path="/reset-password/:token" element={<ResetPassword />} />
 <Route path="/patient/labtests" element={<PrivateRoute role="patient"><PatientLabTests /></PrivateRoute>} />
 <Route path="/shop/dashboard" element={
   <PrivateRoute role="shopOwner"><ShopDashboard /></PrivateRoute>
