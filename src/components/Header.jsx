@@ -20,22 +20,20 @@ export default function Header() {
   const ref = useRef();
 
   useEffect(() => {
+    setCartCount(getCartCount());
+    const onStorage = () => setCartCount(getCartCount());
+    window.addEventListener('storage', onStorage);
+    const interval = setInterval(() => setCartCount(getCartCount()), 1000);
+    return () => { window.removeEventListener('storage', onStorage); clearInterval(interval); };
+  }, [location.pathname]);
+
+  useEffect(() => {
     const h = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
     document.addEventListener('mousedown', h);
     return () => document.removeEventListener('mousedown', h);
   }, []);
 
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
-
-  // Update cart count when navigating or storage changes
-  useEffect(() => {
-    setCartCount(getCartCount());
-    const onStorage = () => setCartCount(getCartCount());
-    window.addEventListener('storage', onStorage);
-    // also poll for same-tab changes
-    const interval = setInterval(() => setCartCount(getCartCount()), 1000);
-    return () => { window.removeEventListener('storage', onStorage); clearInterval(interval); };
-  }, [location.pathname]);
 
   const doLogout = () => { logout(); navigate('/'); setOpen(false); };
 const dashPath =
@@ -60,9 +58,6 @@ const dashPath =
           <Link to="/about" className={isActive('/about') ? 'active' : ''}>About</Link>
           <Link to="/shops" className={isActive('/shops') ? 'active' : ''}>💊 Medical Shops</Link>
           <Link to="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link>
-          <Link to="/cart" className={`cart-nav-link ${isActive('/cart') ? 'active' : ''}`}>
-            🛒{cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </Link>
           <Link to="/scan" className={isActive('/scan') ? 'active' : ''}>
   🆓 Free Help
 </Link>
@@ -74,9 +69,7 @@ const dashPath =
               <button className="avatar-btn" onClick={() => setOpen(!open)}>
                 <div className="avatar-circle">{user.firstName[0]}{user.lastName[0]}</div>
                 <span className="avatar-name">{user.firstName}</span>
-                <span className={`role-pill ${user.role}`}>
-                  {user.role === 'shopOwner' ? 'Pharmacist' : user.role}
-                </span>
+                <span className={`role-pill ${user.role}`}>{user.role}</span>
                 <span className="chevron">{open ? '▲' : '▼'}</span>
               </button>
               {open && (
@@ -87,12 +80,16 @@ const dashPath =
                   </div>
                   <Link to={dashPath} className="dd-item" onClick={() => setOpen(false)}>📊 Dashboard</Link>
                   <Link to="/profile" className="dd-item" onClick={() => setOpen(false)}>👤 My Profile</Link>
+                  {user.role === 'patient' && (
+                    <Link to="/cart" className="dd-item" onClick={() => setOpen(false)}>
+                      🛒 My Cart
+                      {cartCount > 0 && (
+                        <span style={{marginLeft:'auto',background:'var(--rose)',color:'white',fontSize:10,fontWeight:800,padding:'1px 8px',borderRadius:20}}>{cartCount}</span>
+                      )}
+                    </Link>
+                  )}
                   {user.role === 'patient' && <Link to="/patient/bookings" className="dd-item" onClick={() => setOpen(false)}>📅 My Bookings</Link>}
                   {user.role === 'nurse'   && <Link to="/nurse/bookings"   className="dd-item" onClick={() => setOpen(false)}>📋 My Bookings</Link>}
-                  <Link to="/shops" className="dd-item" onClick={() => setOpen(false)}>💊 Medical Shops</Link>
-                  <Link to="/cart" className="dd-item" onClick={() => setOpen(false)}>
-                    🛒 My Cart{cartCount > 0 && <span style={{marginLeft:6,background:'#e11d48',color:'white',fontSize:10,fontWeight:800,padding:'1px 7px',borderRadius:20}}>{cartCount}</span>}
-                  </Link>
                   <div className="dd-divider"/>
                   <button className="dd-item dd-logout" onClick={doLogout}>🚪 Logout</button>
                 </div>
@@ -104,22 +101,23 @@ const dashPath =
               <Link to="/register" className="btn btn-teal btn-sm">Sign Up</Link>
             </div>
           )}
-          <button className="hamburger" onClick={() => setMobileOpen(!mobileOpen)} aria-label="menu">
-            <span className={mobileOpen ? 'open' : ''}/>
-            <span className={mobileOpen ? 'open' : ''}/>
-            <span className={mobileOpen ? 'open' : ''}/>
-          </button>
+          {!user && (
+            <button className="hamburger" onClick={() => setMobileOpen(!mobileOpen)} aria-label="menu">
+              <span className={mobileOpen ? 'open' : ''}/>
+              <span className={mobileOpen ? 'open' : ''}/>
+              <span className={mobileOpen ? 'open' : ''}/>
+            </button>
+          )}
         </div>
       </div>
 
-      {mobileOpen && (
+      {mobileOpen && !user && (
         <nav className="mobile-nav">
           <Link to="/">🏠 Home</Link>
           <Link to="/nurses">👩‍⚕️ Find Nurses</Link>
           <Link to="/services">🧪 Services</Link>
           <Link to="/about">ℹ️ About</Link>
           <Link to="/contact">📞 Contact</Link>
-          <Link to="/cart">🛒 Cart{cartCount > 0 ? ` (${cartCount})` : ''}</Link>
           <Link to="/scan"> Scan prescription</Link>
           {user ? (
             <>
@@ -190,12 +188,12 @@ const dashPath =
 //           <a href="mailto:sehatsehul@gmail.com" className="overlay-btn-primary">
 //             📧 Get Early Access
 //           </a>
-//           <a href="https://wa.me/919186238841" target="_blank" rel="noreferrer" className="overlay-btn-secondary">
+//           <a href="https://wa.me/917780906971" target="_blank" rel="noreferrer" className="overlay-btn-secondary">
 //             💬 WhatsApp Us
 //           </a>
 //         </div>
 //         <div className="overlay-contact">
-//           📞 +91 70061 88346 · 📍 Budgam, Srinagar, J&K
+//           📞 +91 70062 73733 · 📍 Budgam, Srinagar, J&K
 //         </div>
 //         <p className="overlay-admin-hint">
 //           Admin or tester?{' '}

@@ -5,15 +5,30 @@ import { useAuth } from '../context/AuthContext';
 import { StatusBadge } from '../components/Shared';
 import './Dashboard.css';
 
+function getCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem('ss_cart'));
+    return cart?.items?.reduce((s, i) => s + i.quantity, 0) || 0;
+  } catch { return 0; }
+}
+
 export default function PatientDashboard() {
   const { user } = useAuth();
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cartCount, setCartCount] = useState(getCartCount);
 
   useEffect(() => {
     axios.get('/api/bookings/patient')
       .then(r => { setBookings(r.data); setLoading(false); })
       .catch(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    const onStorage = () => setCartCount(getCartCount());
+    window.addEventListener('storage', onStorage);
+    const interval = setInterval(() => setCartCount(getCartCount()), 1000);
+    return () => { window.removeEventListener('storage', onStorage); clearInterval(interval); };
   }, []);
 
   const upcoming = bookings.filter(b => ['pending','confirmed','in-progress'].includes(b.status));
@@ -55,11 +70,19 @@ export default function PatientDashboard() {
             <Link to="/nurses" className="qa-card">
               <span>👩‍⚕️</span><strong>Find a Nurse</strong><p>Browse verified nurses near you</p>
             </Link>
-           <Link to="/book-test" className="qa-card">
-  <span>🧪</span><strong>Book Lab Test</strong><p>Home sample collection</p>
-</Link>
+            <Link to="/book-test" className="qa-card">
+              <span>🧪</span><strong>Book Lab Test</strong><p>Home sample collection</p>
+            </Link>
             <Link to="/profile" className="qa-card">
               <span>👤</span><strong>My Profile</strong><p>Update your info</p>
+            </Link>
+            <Link to="/cart" className="qa-card" style={{position:'relative'}}>
+              <span>🛒</span>
+              <strong>My Cart{cartCount > 0 && <span style={{marginLeft:6,background:'var(--rose)',color:'white',fontSize:10,fontWeight:800,padding:'1px 7px',borderRadius:20}}>{cartCount}</span>}</strong>
+              <p>{cartCount > 0 ? `${cartCount} item${cartCount > 1 ? 's' : ''} waiting` : 'Order medicines online'}</p>
+            </Link>
+            <Link to="/shops" className="qa-card">
+              <span>💊</span><strong>Medical Shops</strong><p>Browse nearby pharmacies</p>
             </Link>
           </div>
         </div>
